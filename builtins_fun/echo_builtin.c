@@ -6,7 +6,7 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 13:50:49 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/10 15:10:59 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/10 18:59:12 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,26 @@ int	total_len(char **args)
 	len = 0;
 	while (*args)
 	{
-		len += ft_strlen(*args);
+		len += ft_strlen(*args) + 1;
 		args++;
 	}
 	return (len);
 }
 
-void	full_buff(char *arg, char *buff, int *j)
+void	full_buff(char **arg, int k, char *buff, int *j)
 {
-	int		i;
+	int	i;
 
 	i = 0;
-	while (arg[i])
+	while (arg[k][i])
 	{
-		buff[*j] = arg[i];
+		buff[*j] = arg[k][i];
 		i++;
+		(*j)++;
+	}
+	if (arg[k + 1])
+	{
+		buff[*j] = ' ';
 		(*j)++;
 	}
 }
@@ -59,16 +64,16 @@ int	echo(char **args)
 	static int	j;
 
 	len = total_len(args);
-	buff = ft_malloc (len + 1, 1);
+	buff = ft_malloc (len, 1);
+	if (!buff)
+		return (0);
 	i = 1;
 	newline = 1;
 	while (args[i] && is_n_option(args[i]))
 		1 && (newline = 0, i++);
 	while (args[i])
 	{
-		full_buff(args[i], buff, &j);
-		if (args[i + 1])
-			full_buff(" ", buff, &j);
+		full_buff(args, i, buff, &j);
 		i++;
 	}
 	buff[j] = '\0';
