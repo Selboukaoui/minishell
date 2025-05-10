@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_executor_list.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 16:18:37 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/10 12:47:38 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/10 18:50:42 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -408,27 +408,27 @@ t_executor	*fill_executor_list(t_shell *shell, t_executor *list)
 		exit_status(1, 0);
 		current = current->next;
 	}
-	t_executor		*curr = list;
-	while (curr)
-	{
-		int i = 0;
+	// t_executor		*curr = list;
+	// while (curr)
+	// {
+	// 	int i = 0;
 	
-		/* Print the command */
-		ft_putstr_fd("the cmd is: [",1);
-		ft_putstr_fd(curr->execs[i],1 );
-		ft_putstr_fd("]\n", 1);
+	// 	/* Print the command */
+	// 	// ft_putstr_fd("the cmd is: [",1);
+	// 	// ft_putstr_fd(curr->execs[i],1 );
+	// 	// ft_putstr_fd("]\n", 1);
 	
-		/* Print the arguments */
-		ft_putstr_fd("arguments is :\n",1 );
-		while (curr->execs[i])
-		{
-			ft_putstr_fd(curr->execs[i], 1);
-			ft_putstr_fd("\n",1 );
-			i++;
-		}
+	// 	/* Print the arguments */
+	// 	ft_putstr_fd("arguments is :\n",1 );
+	// 	while (curr->execs[i])
+	// 	{
+	// 		ft_putstr_fd(curr->execs[i], 1);
+	// 		ft_putstr_fd("\n",1 );
+	// 		i++;
+	// 	}
 	
-		curr = curr->next;
-	}
+	// 	curr = curr->next;
+	// }
 	
 	return (list);
 }

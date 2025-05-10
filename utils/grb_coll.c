@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   grb_coll.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 20:00:22 by selbouka          #+#    #+#             */
-/*   Updated: 2025/05/06 18:27:15 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/10 15:04:31 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int	err(int c)
 {
 	c = 1;
-	return (c);
+	printf ("Allocation failed\n");
+	return (0);
 }
 
 void	free_all(t_collect **head)

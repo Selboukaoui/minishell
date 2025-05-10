@@ -6,7 +6,7 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 12:15:09 by selbouka          #+#    #+#             */
-/*   Updated: 2025/05/09 19:44:31 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/09 21:24:58 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,34 +42,6 @@ static int	counter(const char *s, char sep)
 	}
 	return (count);
 }
-
-
-// static char	*ft_strndup(const char *str, char n)
-// {
-// 	int		len;
-// 	int		i;
-// 	char	*s;
-
-// 	len = 0;
-// 	i = 0;
-// 	if (!str)
-// 		return (NULL);
-// 	while (str[len] != n && str[len])
-// 		len++;
-// 	s = ft_malloc (len + 1, 1);
-// 	if (s == NULL)
-// 		return (NULL);
-// 	while (i < len)
-// 	{
-// 		s[i] = str[i];
-// 		i++;
-// 	}
-// 	s[i] = '\0';
-// 	return (s);
-// }
-
-
-
 
 static char	**loop(const char *s, char **array, char sep)
 {
