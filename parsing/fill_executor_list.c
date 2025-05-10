@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_executor_list.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 16:18:37 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/10 18:50:42 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/10 19:26:39 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -396,7 +396,7 @@ t_executor	*fill_executor_list(t_shell *shell, t_executor *list)
 	t_lexer_list	*lexer;
 
 	current = list;
-	lexer = shell->lex_head;
+	lexer = shell->lex_head; 
 	while (current)
 	{
 		list = process_lexemes(list, current, &lexer, shell);
@@ -408,27 +408,5 @@ t_executor	*fill_executor_list(t_shell *shell, t_executor *list)
 		exit_status(1, 0);
 		current = current->next;
 	}
-	// t_executor		*curr = list;
-	// while (curr)
-	// {
-	// 	int i = 0;
-	
-	// 	/* Print the command */
-	// 	// ft_putstr_fd("the cmd is: [",1);
-	// 	// ft_putstr_fd(curr->execs[i],1 );
-	// 	// ft_putstr_fd("]\n", 1);
-	
-	// 	/* Print the arguments */
-	// 	ft_putstr_fd("arguments is :\n",1 );
-	// 	while (curr->execs[i])
-	// 	{
-	// 		ft_putstr_fd(curr->execs[i], 1);
-	// 		ft_putstr_fd("\n",1 );
-	// 		i++;
-	// 	}
-	
-	// 	curr = curr->next;
-	// }
-	
 	return (list);
 }

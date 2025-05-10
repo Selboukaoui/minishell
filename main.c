@@ -91,7 +91,6 @@ int is_cmdline_empty(const char *cmdline)
 //     return (replace_vars(input, shell));
 // }
 
-
 int main(int ac, char **av, char **env)
 {
     t_shell *shell;
@@ -125,20 +124,22 @@ int main(int ac, char **av, char **env)
 		}
         if (*shell->rl_input)
             add_history(shell->rl_input);
-        if (!check_syntax(shell))
-            continue ;
+        if (!check_syntax(shell)) 
+            continue ; 
+        shell->rl_input = process_line_expand_first_var(shell->rl_input, shell);
+        printf("the new str-->%s\n", shell->rl_input);
         char *str = handle_dollar_quotes(shell->rl_input);
         free (shell->rl_input);
         shell->rl_input = str;
         shell->rl_input = replace_var_equals_var(shell->rl_input, shell);// handle echo $PATH=''
-        // printf("str1-->%s\n", shell->rl_input );
+        printf("str1-->%s\n", shell->rl_input );
         shell->rl_input = export_hard(shell->rl_input, shell);
-        // printf("strrrr-->%s\n", shell->rl_input);
+        printf("strrrr-->%s\n", shell->rl_input);
         if (!shell->rl_input)
             continue;
         shell->rl_copy = clean_rl_copy(shell->rl_input);
         shell->rl_copy = replace_vars1(shell->rl_input, shell);
-        // printf("str-->%s\n", shell->rl_copy);
+        printf("str-->%s\n", shell->rl_copy);
         if (parser(shell) == false)
             continue ;
         // t_lexer_list *lexr = shell->lex_head;

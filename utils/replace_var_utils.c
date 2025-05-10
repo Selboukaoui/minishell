@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 21:47:45 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/09 21:55:16 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/10 19:28:20 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static	void	append_var(const char *seg, t_shell *shell,
 	ptrs[0] = start + len;
 }
 
-char	*ft_replace_var(const char *seg, t_shell *shell)
+char	*ft_replace_var3(const char *seg, t_shell *shell)
 {
 	int		ptrs[2];
 	int		total;
@@ -54,7 +54,7 @@ char	*ft_replace_var(const char *seg, t_shell *shell)
 	if (!seg || !shell)
 		return (NULL);
 	total = ft_strlen(seg) + all_value((char *)seg, shell) + 1;
-	result = ft_malloc(total, 1);
+	result = ft_malloc(total, 1); 
 	if (!result)
 		return (NULL);
 	while (seg[ptrs[0]])
@@ -93,7 +93,7 @@ static	char	*ft_check_segments(char *seg, t_shell *shell)
 	}
 	if (has_equal && seg[i] != '$')
 		return (seg);
-	return (ft_replace_var(seg, shell));
+	return (ft_replace_var3(seg, shell));
 }
 
 static	char	*process_token(char *output,
