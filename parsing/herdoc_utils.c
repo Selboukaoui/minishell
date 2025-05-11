@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_executor_list.c                               :+:      :+:    :+:   */
+/*   herdoc_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/17 16:18:37 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/11 14:26:26 by asebban          ###   ########.fr       */
+/*   Created: 2025/05/11 14:39:43 by asebban           #+#    #+#             */
+/*   Updated: 2025/05/11 14:43:58 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-extern int	g_signals;
-
-t_executor	*fill_executor_list(t_shell *shell, t_executor *list)
+int	open_heredoc_pipe(int pipefd[2])
 {
-	t_executor		*current;
-	t_lexer_list	*lexer;
+	if (pipe(pipefd) == -1)
+		return (-1);
+	return (0);
+}
 
-	current = list;
-	lexer = shell->lex_head;
-	while (current)
-	{
-		list = process_lexemes(list, current, &lexer, shell);
-		if (!list)
-		{
-			exit_status(1, 1);
-			return (NULL);
-		}
-		exit_status(1, 0);
-		current = current->next;
-	}
-	return (list);
+void	handle_eof(char *delimiter)
+{
+	ft_putstr_fd("minishell: warning: here-document \
+delimited by end-of-file (wanted `", STDERR_FILENO);
+	ft_putstr_fd(delimiter, STDERR_FILENO);
+	ft_putstr_fd("')\n", STDERR_FILENO);
+}
+
+bool	is_delimiter(const char *line, const char *delimiter)
+{
+	return (line && ft_strcmp(line, delimiter) == 0);
 }

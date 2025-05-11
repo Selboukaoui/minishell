@@ -1,0 +1,14 @@
+builtins_fun
+executor
+includes
+info
+libft
+main.c
+main.o
+Makefile
+minishell
+out
+parsing
+test.c
+test_cases
+utils

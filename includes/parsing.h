@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 17:31:21 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/10 19:28:27 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/11 14:44:10 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,15 @@ char            *change_all_var(const char *str, t_shell *sh);
 int             calculate_max_len(const char *str, t_shell *shell);
 char            *process_tokens(char **tokens, t_shell *shell);
 int             var_name_len1(const char *seg, int pos);
+int             create_heredoc(char *delimiter, t_shell *shell);
+int             is_last_delim_quoted(const char *cmdline);
+char            *replace_vars_heredoc(char *input, t_shell *shell);
+t_executor *process_lexemes(t_executor *list,t_executor *current, t_lexer_list **lexer, t_shell *shell);
+int	process_command(t_executor *current, t_lexer_list *lexer);
+int	process_in_heredoc(t_executor *cur, t_lexer_list *lex, t_shell *sh);
+int process_out_append(t_executor *current, t_lexer_list *lexer);
+bool	open_outputfile(t_executor *current, t_lexer_list *lexer);
+bool	is_delimiter(const char *line, const char *delimiter);
+void	handle_eof(char *delimiter);
+int	open_heredoc_pipe(int pipefd[2]);
 #endif
