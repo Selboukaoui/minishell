@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_builtin.c                                      :+:      :+:    :+:   */
+/*   herdoc_val_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/21 12:14:24 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/11 17:39:12 by asebban          ###   ########.fr       */
+/*   Created: 2025/05/11 17:06:34 by asebban           #+#    #+#             */
+/*   Updated: 2025/05/11 17:08:00 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	env(t_shell *shell)
+void	lookup_and_append(const char *name_buf,
+	char *out, t_replinfo *info, t_shell *shell)
 {
-	t_environ_node	*current;
+	char	*val;
 
-	if (shell->executor->execs[1])
-		return (write (2, "env :To many arguments\n", 24), 0);
-	current = shell->env->head;
-	while (current)
-	{
-		if (current->value)
-		{
-			ft_putstr_fd(current->key, STDOUT_FILENO);
-			ft_putchar_fd('=', STDOUT_FILENO);
-			ft_putstr_fd(current->value, STDOUT_FILENO);
-			ft_putchar_fd('\n', STDOUT_FILENO);
-		}
-		current = current->next;
-	}
-	return (EXIT_SUCCESS);
+	val = get_env_value(shell->env, (char *)name_buf);
+	if (val)
+		info->o = buf_append(out, info->o, val);
+}
+
+size_t	handle_alpha_case(const char *input,
+	char *out, t_replinfo *info, t_shell *shell)
+{
+	char	name[256];
+
+	extract_var_name(input, info, name);
+	lookup_and_append(name, out, info, shell);
+	return (info->i);
 }

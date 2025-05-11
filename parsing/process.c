@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:58:23 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/11 12:03:45 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/11 17:29:19 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 bool	open_outputfile(t_executor *current, t_lexer_list *lexer)
 {
+	if (!lexer || !lexer->str)
+	{
+		ft_putstr_fd("minishell: ambiguous redirect\n", STDERR_FILENO);
+		return (false);
+	}
 	if (current->append)
-		current->fd_out = open(lexer->str,
-			O_WRONLY | O_CREAT | O_APPEND, 0644);
+		current->fd_out = open(lexer->str, O_WRONLY | O_CREAT | O_APPEND, 0644);
 	else
-		current->fd_out = open(lexer->str,
-			O_WRONLY | O_CREAT | O_TRUNC, 0644);
+		current->fd_out = open(lexer->str, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (current->fd_out == -1)
 	{
 		perror(lexer->str);
@@ -28,28 +31,28 @@ bool	open_outputfile(t_executor *current, t_lexer_list *lexer)
 	return (true);
 }
 
-int process_out_append(t_executor *current, t_lexer_list *lexer)
-{
-	// if (!lexer->next || lexer->next->type != EMPTY)
-	// 	return (FAILED);
-	// 	fprintf(stderr, "dkhel\n");
-	
+int	process_out_append(t_executor *current, t_lexer_list *lexer)
+{	
 	current->append = (lexer->type == APPEND);
 	current->rederect_out = (lexer->type == rederect_out);
 	if (!open_outputfile(current, lexer->next))
 		return (FAILED);
-	
 	return (OK);
 }
 
 int	process_in_heredoc(t_executor *cur, t_lexer_list *lex, t_shell *sh)
 {
-	if (lex->type == HEREDOC) 
+	if (!lex->next || !lex->next->str)
+	{
+		ft_putstr_fd("minishell: ambiguous redirect\n", STDERR_FILENO);
+		return (FAILED);
+	}
+	if (lex->type == HEREDOC)
 	{
 		cur->fd_in = create_heredoc(lex->next->str, sh);
 		if (cur->fd_in == -1 || cur->fd_in == -2)
 			return (FAILED);
-	} 
+	}
 	else
 	{
 		cur->fd_in = open(lex->next->str, O_RDONLY);
@@ -60,7 +63,7 @@ int	process_in_heredoc(t_executor *cur, t_lexer_list *lex, t_shell *sh)
 			return (FAILED);
 		}
 	}
-	return OK;
+	return (OK);
 }
 
 int	process_command(t_executor *current, t_lexer_list *lexer)

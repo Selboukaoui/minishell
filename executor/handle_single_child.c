@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 12:13:22 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/10 12:28:32 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/11 17:12:24 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ static	void	check_empty_cmd_or_exit(char *cmd)
 {
 	if (is_cmdline_empty(cmd))
 	{
-		ft_putstr_fd("minishell: ", STDERR_FILENO);
-		ft_putstr_fd(cmd, STDERR_FILENO);
-		ft_putstr_fd(": command not found\n", STDERR_FILENO);
+		ft_putstr_fd("minishell: : command not found\n", STDERR_FILENO);
 		ft_malloc(0, 0);
 		exit(127);
 	}
@@ -40,7 +38,6 @@ static	char	*resolve_cmd_path_or_exit(t_shell *shell, char *cmd)
 	size_t		len;
 	struct stat	st;
 
-	// printf("-->cmd : %s\n", cmd);
 	if (ft_strchr(cmd, '/'))
 		return (cmd);
 	path = get_path(shell, true);
@@ -70,12 +67,9 @@ static	void	exec_command_and_cleanup(char *path,
 	env_array = transform_environ_array(shell);
 	if (!env_array)
 		(ft_malloc(0, 0), exit(126));
-	// printf("cmd--->: {%s}\n" ,path);
-	// for(int i = 0;args[i]; i++)
-	// 	printf("arg[%d]--->: {%s}\n" ,i, args[i]);
 	execve(path, args, env_array);
 	if (errno == ENOENT)
-        handle_no_file_error(path);
+		handle_no_file_error(path);
 	if (stat(path, &st) == 0 && S_ISDIR(st.st_mode))
 	{
 		ft_putstr_fd("minishell: ", STDERR_FILENO);

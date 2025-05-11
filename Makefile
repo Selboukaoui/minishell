@@ -10,7 +10,7 @@ SRCM = main.c \
 		builtins_fun/ft_cd.c  builtins_fun/ft_pwd.c  builtins_fun/handle_single_builtin.c builtins_fun/env_builtin.c builtins_fun/echo_builtin.c utils/ft_get_value.c utils/exit_status.c builtins_fun/export_builtin.c \
 		builtins_fun/unset_builtin.c builtins_fun/exit_builtin.c builtins_fun/builtins_utils.c builtins_fun/handle_single_builtin2.c utils/handle_dollar_quotes.c utils/replace_var_equals_var.c utils/all_values.c \
 		executor/path_handler_multi.c  utils/replace_vars.c  utils/export_hard.c utils/change_all_var.c utils/calculate_len.c utils/ft_split_utils2.c utils/ft_split_utils1.c utils/replace_var_utils.c builtins_fun/export_utils2.c builtins_fun/export_utils1.c \
-		utils/expand_hard2.c parsing/herdoc_handler.c parsing/process_lexemes.c parsing/process.c parsing/last_del.c parsing/herdoc_var.c parsing/herdoc_utils.c 
+		utils/expand_hard2.c parsing/herdoc_handler.c parsing/process_lexemes.c parsing/process.c parsing/last_del.c parsing/herdoc_var.c parsing/herdoc_utils.c parsing/herdoc_var_utils.c parsing/herdoc_val_utils.c parsing/token_utils.c
 SRCLIB = libft/ft_lstadd_back_bonus.c libft/ft_lstsize_bonus.c libft/ft_strjoin.c libft/ft_atoi.c libft/ft_lstadd_front_bonus.c \
 			libft/ft_lstlast_bonus.c libft/ft_lstnew_bonus.c libft/ft_split.c libft/ft_strdup.c libft/ft_strlen.c libft/ft_isdigit.c \
 			libft/ft_split1.c

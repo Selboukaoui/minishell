@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 17:32:07 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/10 10:34:44 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/11 17:49:46 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,17 @@ typedef struct s_varctx
 	t_shell		*sh;
 }	t_varctx;
 
-typedef struct s_export_data {
-	char *key;
-	char *value;
-	bool append;
-}               t_export_data;
+typedef struct s_export_data
+{
+	char	*key;
+	char	*value;
+	bool	append;
+}	t_export_data;
+
+typedef struct s_replinfo
+{
+	size_t	i;
+	size_t	o;
+}	t_replinfo;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:42:43 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/11 11:11:03 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/11 17:11:51 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,10 @@ static	void	handle_fork_execution(t_shell *shell)
 		return ;
 	}
 	if (pid == 0)
-	{
 		(signal_setup(3), handle_single_child(shell));
-		// exit(exit_status(EXIT_GET, 0));
-	}
 	waitpid(pid, &status, 0);
 	if (WIFEXITED(status))
-	{
-		printf("here");
 		exit_status(EXIT_SET, WEXITSTATUS(status));
-	}
 	else if (WIFSIGNALED(status))
 	{
 		if (status == 131)

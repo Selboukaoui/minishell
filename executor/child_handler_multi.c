@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:38:38 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/08 16:20:52 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/11 16:42:15 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,9 +115,7 @@ int	child_handler_multi(int *fildes, t_executor *current, t_info *info)
 		(ft_malloc(0, 0), exit(FAIL_SYSCALL_CHILD));
 	if (is_cmdline_empty(current->execs[0]))
 	{
-		ft_putstr_fd("minishell: ", STDERR_FILENO);
-		ft_putstr_fd(current->execs[0], STDERR_FILENO);
-		ft_putstr_fd(": command not found\n", STDERR_FILENO);
+		ft_putstr_fd("minishell: : command not found\n", STDERR_FILENO);
 		(ft_malloc(0, 0), exit(127));
 	}
 	if (is_builtin(current->execs[0]))

@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 17:31:21 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/11 14:44:10 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/11 17:48:29 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,30 +23,51 @@ bool			parser(t_shell *shell);
 char			**ft_newsplit(const char *s);
 int				ft_strcmp(const char *s1, const char *s2);
 void			signal_setup(int mode);
-int             check_redirect_out(char *input, int j);
+int				check_redirect_out(char *input, int j);
 int				check_redirect_in(char *input, int j);
 void			int_to_str(int num, char *str);
 char			*ft_strcpy(char *dest, const char *src);
 char			*ft_strncpy(char *dest, const char *src, size_t n);
 t_token			which_type(char *s, int inside);
-// char			*replace_vars(char *input, t_shell *shell);
 int				herdoc_status(int action, int value);
 char			*handle_dollar_quotes(char *input);
 char			*replace_var_equals_var(char *input, t_shell *shell);
 int				all_value(char *seg, t_shell *shell);
-char            *change_all_var(const char *str, t_shell *sh);
-int             calculate_max_len(const char *str, t_shell *shell);
-char            *process_tokens(char **tokens, t_shell *shell);
-int             var_name_len1(const char *seg, int pos);
-int             create_heredoc(char *delimiter, t_shell *shell);
-int             is_last_delim_quoted(const char *cmdline);
-char            *replace_vars_heredoc(char *input, t_shell *shell);
-t_executor *process_lexemes(t_executor *list,t_executor *current, t_lexer_list **lexer, t_shell *shell);
-int	process_command(t_executor *current, t_lexer_list *lexer);
-int	process_in_heredoc(t_executor *cur, t_lexer_list *lex, t_shell *sh);
-int process_out_append(t_executor *current, t_lexer_list *lexer);
-bool	open_outputfile(t_executor *current, t_lexer_list *lexer);
-bool	is_delimiter(const char *line, const char *delimiter);
-void	handle_eof(char *delimiter);
-int	open_heredoc_pipe(int pipefd[2]);
+char			*change_all_var(const char *str, t_shell *sh);
+int				calculate_max_len(const char *str, t_shell *shell);
+char			*process_tokens(char **tokens, t_shell *shell);
+int				var_name_len1(const char *seg, int pos);
+int				create_heredoc(char *delimiter, t_shell *shell);
+int				is_last_delim_quoted(const char *cmdline);
+char			*replace_vars_heredoc(char *input, t_shell *shell);
+t_executor		*process_lexemes(t_executor *list, \
+t_executor *current, t_lexer_list **lexer, t_shell *shell);
+int				process_command(t_executor *current, t_lexer_list *lexer);
+int				process_in_heredoc(t_executor *cur, \
+t_lexer_list *lex, t_shell *sh);
+int				process_out_append(t_executor *current, t_lexer_list *lexer);
+bool			open_outputfile(t_executor *current, t_lexer_list *lexer);
+bool			is_delimiter(const char *line, const char *delimiter);
+void			handle_eof(char *delimiter);
+int				open_heredoc_pipe(int pipefd[2]);
+size_t			buf_append(char *out, size_t o, const char *str);
+size_t			append_exit_status(char *out, size_t o);
+void			append_env_var(char *out, \
+const char *start, t_shell *shell, size_t info[2]);
+void			handle_variable_name(const char *input, \
+size_t *idx, t_shell *shell, size_t *out_len);
+void			calc_var_length(const char *input, \
+size_t *idx, t_shell *shell, size_t *out_len);
+size_t			handle_alpha_case(const char *input, \
+char *out, t_replinfo *info, t_shell *shell);
+void			lookup_and_append(const char *name_buf, \
+char *out, t_replinfo *info, t_shell *shell);
+size_t			extract_var_name(const char *input, \
+t_replinfo *info, char *name_buf);
+t_token			which_type(char *s, int inside);
+int				find_token_pos(const char *rl, const char *s, int last_pos);
+t_lexer_list	*create_lexer_list(char **input_array);
+t_lexer_list	*allocate_lexer_nodes(int size);
+int				count_input_array(char **input_array);
+
 #endif
