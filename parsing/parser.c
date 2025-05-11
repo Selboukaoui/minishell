@@ -6,7 +6,7 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 12:27:05 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/09 19:30:35 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/10 21:46:46 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@ t_lexer_list	*lexer(t_shell *shell)
 
 int	check_syntax(t_shell *input)
 {
-	if (!check_redirect_in(input->rl_input) || \
-		!check_redirect_out(input->rl_input))
+	int	j;
+
+	j = 0;
+	if (!check_redirect_in(input->rl_input, j) || \
+		!check_redirect_out(input->rl_input, j))
 	{
 		exit_status(EXIT_SET, 2);
 		return (0);
