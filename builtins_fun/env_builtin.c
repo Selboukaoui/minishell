@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_builtin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 12:14:24 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/04 09:59:30 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/11 14:56:53 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	env(t_shell *shell)
 {
 	t_environ_node	*current;
 
+	if (shell->executor->execs[1])
+		return (write (2, "To many arguments\n",19), 0);
 	current = shell->env->head;
 	while (current)
 	{
