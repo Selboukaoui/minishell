@@ -6,16 +6,15 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 16:18:37 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/10 19:26:39 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/11 10:58:45 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
+extern int	g_signals;
 
-extern int  g_signals;
-
-static bool open_outputfile(t_executor *current, t_lexer_list *lexer)
+static	bool	open_outputfile(t_executor *current, t_lexer_list *lexer)
 {
 	if (current->append)
 		current->fd_out = open(lexer->str,
@@ -23,23 +22,20 @@ static bool open_outputfile(t_executor *current, t_lexer_list *lexer)
 	else
 		current->fd_out = open(lexer->str,
 			O_WRONLY | O_CREAT | O_TRUNC, 0644);
-
 	if (current->fd_out == -1)
 	{
 		perror(lexer->str);
-		return false;
+		return (false);
 	}
-	return true;
+	return (true);
 }
 
 
 static int process_out_append(t_executor *current, t_lexer_list *lexer)
 {
 	// if (!lexer->next || lexer->next->type != EMPTY)
-	// {
-	//     // ft_putstr_fd("minishell: syntax error near unexpected token\n", STDERR_FILENO);
-	//     return (FAILED);
-	// }
+	// 	return (FAILED);
+	// 	fprintf(stderr, "dkhel\n");
 	
 	current->append = (lexer->type == APPEND);
 	current->rederect_out = (lexer->type == rederect_out);
@@ -347,6 +343,7 @@ static t_executor *process_lexemes(t_executor *list, t_executor *current, t_lexe
 	int ret;
 	while (*lexer)
 	{
+		// fprintf(stderr, "iiiiiiiiiiiiii\n");
 		if ((*lexer)->type == PIPE)
 		{
 			(*lexer) = (*lexer)->next;

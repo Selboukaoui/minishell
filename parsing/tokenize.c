@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 12:35:04 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/10 19:27:08 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/10 20:51:28 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int	assign_lexer_data(t_lexer_list *cur, char **input_array, const char *rl_copy
 	int		inside;
 	size_t	len;
 
-	1 && (i = 0, last_pos = 0);
+	1 && (i = 0, last_pos = 0, inside = 0);
 	while (input_array[i] && cur)
 	{
 		cur->str = ft_strdup(input_array[i]);

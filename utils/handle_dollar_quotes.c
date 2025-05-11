@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 13:47:52 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/07 15:14:37 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/11 10:57:28 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ char	*handle_dollar_quotes(char *input)
 	int		out_pos;
 	int		i;
 
+	if (!input)
+		return (NULL);
 	out = ft_malloc(ft_strlen(input) + 1, 1);
 	out_pos = 0;
 	i = 0;

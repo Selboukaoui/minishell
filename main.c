@@ -126,27 +126,28 @@ int main(int ac, char **av, char **env)
             add_history(shell->rl_input);
         if (!check_syntax(shell)) 
             continue ; 
+        shell->rl_input = clean_rl_copy(shell->rl_input);
         shell->rl_input = process_line_expand_first_var(shell->rl_input, shell);
-        printf("the new str-->%s\n", shell->rl_input);
+        // printf("the new str-->%s\n", shell->rl_input);
         char *str = handle_dollar_quotes(shell->rl_input);
-        free (shell->rl_input);
+        // free (shell->rl_input);
         shell->rl_input = str;
         shell->rl_input = replace_var_equals_var(shell->rl_input, shell);// handle echo $PATH=''
-        printf("str1-->%s\n", shell->rl_input );
+        // printf("str1-->%s\n", shell->rl_input );
         shell->rl_input = export_hard(shell->rl_input, shell);
-        printf("strrrr-->%s\n", shell->rl_input);
+        // printf("strrrr-->%s\n", shell->rl_input);
         if (!shell->rl_input)
             continue;
-        shell->rl_copy = clean_rl_copy(shell->rl_input);
         shell->rl_copy = replace_vars1(shell->rl_input, shell);
-        printf("str-->%s\n", shell->rl_copy);
+        // printf("str-->%s\n", shell->rl_copy)
+
         if (parser(shell) == false)
             continue ;
         // t_lexer_list *lexr = shell->lex_head;
         // while(lexr)
         // {
-        //     printf("cmd----->%s\n", lexr->str);
-        //     printf("type----->%u\n",lexr->type);
+            // printf("cmd----->%s\n", lexr->str);
+            // printf("type----->%u\n",lexr->type);
         //     lexr = lexr->next;
         // }
         executor(shell);
@@ -309,26 +310,26 @@ int main(int ac, char **av, char **env)
 
 //         // handle history cmd here
 //         shell->rl_input = handle_dollar_quotes(shell->rl_input);
-//         // printf("str_handle_dolar ----> %s\n", shell->rl_input);
+        // printf("str_handle_dolar ----> %s\n", shell->rl_input);
 //         shell->rl_copy = clean_rl_copy(shell->rl_input);
-//         // printf ("rl->copy : %s\n",shell->rl_copy);
+        // printf ("rl->copy : %s\n",shell->rl_copy);
 //         shell->rl_copy = replace_vars(shell->rl_input, shell);
 
-//         // printf("str ----> %s\n", shell->rl_copy);
+        // printf("str ----> %s\n", shell->rl_copy);
 //         // if (!ft_strcmp(shell->rl_input, "\\"))
 //         // {
 //         //     ft_putstr_fd("syntax error near unexpected token`(xx)'\n", 2);
 //         //     //clean
 //         // }
 
-//         // printf ("%s-->\n", shell->rl_copy);
+        // printf ("%s-->\n", shell->rl_copy);
 //         if (parser(shell) == false)
 //             continue ;
 
 //         // t_shell *tst = shell;
 //         // while (tst->lex_head)
 //         // {
-//         //     printf ("str ----> %s\n type -----> %u\n", tst->lex_head->str, tst->lex_head->type);
+        //     printf ("str ----> %s\n type -----> %u\n", tst->lex_head->str, tst->lex_head->type);
 //         //     tst->lex_head = tst->lex_head->next;
 //         // }
 

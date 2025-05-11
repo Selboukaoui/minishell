@@ -119,5 +119,15 @@ export $a=$b | << $PATH
 
  l's' -la | ls '>' --> segmentation fault
 
- ls="ls > la"
+ ls="ls > la" with echo
  '     $PATH'
+
+ "" | "" |""
+
+ minishell-1.0$~ < Makefile  cat -e > pp
+minishell-1.0$~ cat pp
+cat: pp: No such file or directory
+
+minishell-1.0$~ ls > kik
+minishell-1.0$~ cat kik
+cat: kik: No such file or directory

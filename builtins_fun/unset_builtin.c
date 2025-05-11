@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset_builtin.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 14:32:39 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/09 15:01:42 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/10 21:22:54 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,19 @@
 
 static	bool	is_valid_identifier1(char *arg)
 {
-	if (!arg || !*arg || (!ft_isalpha(*arg) && *arg != '_'))
-		return (false);
-	while (*arg)
-	{
-		if (!ft_isalnum(*arg) && *arg != '_')
-			return (false);
-		arg++;
-	}
+	(void)arg;
+	// if (!arg || !*arg || (!ft_isalpha(*arg)))
+	// 	return (false);
+	// while (*arg)
+	// {
+	// 	if (!ft_isalnum(*arg))
+	// 		return (false);
+	// 	arg++;
+	// }
 	return (true);
 }
-
+//_
+// unset ______="hjbfs"
 static	void	delete_variable(t_shell *shell, char *arg)
 {
 	t_environ_node	*current;
