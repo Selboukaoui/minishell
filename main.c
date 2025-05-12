@@ -14,83 +14,6 @@
 
 int g_signals;
 
-void *ft_realloc(void *ptr, size_t old_size, size_t new_size)
-{
-    void *new_ptr;
-
-    if (new_size == 0)
-    {
-        // free(ptr);
-        return NULL;
-    }
-
-    new_ptr = ft_malloc(new_size,  1);
-    if (!new_ptr)
-        return NULL;
-
-    if (ptr)
-    {
-        // Copy the old contents to the new memory block
-        size_t size_to_copy = old_size < new_size ? old_size : new_size;
-        ft_memcpy(new_ptr, ptr, size_to_copy);
-        // free(ptr);
-    }
-
-    return new_ptr;
-}
-
-static int ft_isspace(int c)
-{
-    return (c == ' ' || c == '\t' || c == '\n' ||
-            c == '\v' || c == '\f' || c == '\r');
-}
-
-int is_cmdline_empty(const char *cmdline)
-{
-    if (!cmdline)
-        return 1;
-
-    int i = 0;
-    while (cmdline[i])
-    {
-        // skip whitespace
-        if (ft_isspace((unsigned char)cmdline[i])) {
-            i++;
-            continue;
-        }
-
-        // skip empty double quotes
-        if (cmdline[i] == '"' && cmdline[i + 1] == '"' ) {
-            i += 2;
-            continue;
-        }
-
-        // skip empty single quotes
-        if (cmdline[i] == '\'' && cmdline[i + 1] == '\'') {
-            i += 2;
-            continue;
-        }
-
-        // if any other non-space, non-empty-quote char is found, not empty
-        return 0;
-    }
-
-    return 1;  // only whitespace or empty quotes
-}
-
-
-
-/* Expose replace_vars for external use */
-// char *expand_variables(const char *input, t_shell *shell)
-// {
-//     return (replace_vars(input, shell));
-// }
-/* Expose replace_vars for external use */
-// char *expand_variables(const char *input, t_shell *shell)
-// {
-//     return (replace_vars(input, shell));
-// }
-
 int main(int ac, char **av, char **env)
 {
     t_shell *shell;
@@ -128,18 +51,18 @@ int main(int ac, char **av, char **env)
             continue ; 
         shell->rl_input = clean_rl_copy(shell->rl_input);
         shell->rl_input = process_line_expand_first_var(shell->rl_input, shell);
-        // printf("the new str-->%s\n", shell->rl_input);
+        printf("the new str-->%s\n", shell->rl_input);
         char *str = handle_dollar_quotes(shell->rl_input);
         // free (shell->rl_input);
         shell->rl_input = str;
         shell->rl_input = replace_var_equals_var(shell->rl_input, shell);// handle echo $PATH=''
-        // printf("str1-->%s\n", shell->rl_input );
+        printf("str1-->%s\n", shell->rl_input );
         shell->rl_input = export_hard(shell->rl_input, shell);
-        // printf("strrrr-->%s\n", shell->rl_input);
+        printf("strrrr-->%s\n", shell->rl_input);
         if (!shell->rl_input)
             continue;
         shell->rl_copy = replace_vars1(shell->rl_input, shell);
-        // printf("str-->%s\n", shell->rl_copy)
+        printf("str-->%s\n", shell->rl_copy);
 
         if (parser(shell) == false)
             continue ;

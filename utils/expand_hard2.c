@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 17:21:28 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/11 18:55:28 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/12 11:41:48 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,7 +177,7 @@ char    *process_line_expand_first_var(char *line, t_shell *shell)
     while (parts[i])
     {
         trimmed = (char *)skip_leading_spaces(parts[i]);
-        if (ft_strncmp(trimmed, "echo", 4) == 0)
+        // if (ft_strncmp(trimmed, "echo", 4) == 0)
         if (*trimmed == '$')// if NULL
         {
             expanded = expand_vars_in(trimmed, shell);

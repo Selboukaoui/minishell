@@ -131,3 +131,5 @@ cat: pp: No such file or directory
 minishell-1.0$~ ls > kik
 minishell-1.0$~ cat kik
 cat: kik: No such file or directory
+
+$./fgashj

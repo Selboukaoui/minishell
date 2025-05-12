@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 17:31:21 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/11 17:48:29 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/12 11:26:58 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,23 @@ int				find_token_pos(const char *rl, const char *s, int last_pos);
 t_lexer_list	*create_lexer_list(char **input_array);
 t_lexer_list	*allocate_lexer_nodes(int size);
 int				count_input_array(char **input_array);
-
+int	handle_expand_home(const char *in,
+    char **res, int *i, t_shell *shell);
+void	process_variable(const char *segment,
+        char **res, int *i, t_shell *shell);
+int	handle_expand_variable(const char *in,
+            char **res, int *i, t_shell *shell);
+void	process_home(const char *segment,
+                char **res, int *i, t_shell *shell);
+char	*segment_expand(const char *segment, t_shell *shell);
+char	*process_export_segment(const char *seg, t_shell *shell);
+char	*expand_variables(const char *input, t_shell *shell);
+int	handle_skip_heredoc(const char *in, char **res, int *i);
+int	should_toggle_squote(char c, int skip_word);
+void	append_char(char **res, const char *src, int len);
+void	process_skip_word(const char *segment,
+    char **res, int *i, int *skip_word);
+char	*get_env_value2(const char *key, t_shell *shell);
+char	*ft_strtrim1(const char *s1);
+int	is_cmdline_empty(const char *cmdline);
 #endif

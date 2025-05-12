@@ -73,6 +73,6 @@ $> env
 
 
 
-
+export $
 
 // builtins_fun > file

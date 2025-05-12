@@ -1,4 +1,7 @@
 builtins_fun
+c
+c=
+c= a > c
 executor
 includes
 info
@@ -7,7 +10,6 @@ main.c
 main.o
 Makefile
 minishell
-out
 parsing
 test.c
 test_cases
