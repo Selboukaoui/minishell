@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 21:47:45 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/10 19:28:20 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/11 18:31:55 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*ft_replace_var3(const char *seg, t_shell *shell)
 	if (!seg || !shell)
 		return (NULL);
 	total = ft_strlen(seg) + all_value((char *)seg, shell) + 1;
-	result = ft_malloc(total, 1); 
+	result = ft_malloc(total, 1);
 	if (!result)
 		return (NULL);
 	while (seg[ptrs[0]])

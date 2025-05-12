@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_multi.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:31:19 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/09 19:25:24 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/12 09:49:10 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	wait_pipeline(t_info *info, int number)
 		{
 			if (status == 131 && j == 0)
 				(printf("Quit (core dumped)\n"), j = 1);
-			else if (j == 0)
+			else if (status == 2 && j == 0)
 				(printf("\n"), j = 1);
 			exit_status(EXIT_SET, 128 + WTERMSIG(status));
 		}
