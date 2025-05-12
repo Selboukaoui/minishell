@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:01:39 by selbouka          #+#    #+#             */
-/*   Updated: 2025/05/09 21:12:47 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/12 12:50:32 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
-
 
 char	*ft_strcat(char *dest, const char *src);
 int		ft_atoi(const char *str);
@@ -69,7 +68,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-char *ft_strjoin2(char *s1, char *s2, int to_free);
+char	*ft_strjoin2(char *s1, char *s2, int to_free);
 char	**ft_split1(char const *s, char c);
 char	*ft_strncat(char *dest, const char *src, size_t n);
 

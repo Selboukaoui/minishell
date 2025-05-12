@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   count.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 18:11:04 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/11 18:22:27 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/12 12:49:44 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	counter2(const char *s, char sep, int *i, char *quote)
+{
+	while (s[*i])
+	{
+		if ((s[*i] == '\'' || s[*i] == '\"'))
+		{
+			if (!(*quote))
+				(*quote) = s[*i];
+			else if ((*quote) == s[*i])
+				(*quote) = 0;
+		}
+		if (s[*i] == sep && !(*quote))
+			break ;
+		(*i)++;
+	}
+}
 
 int	counter1(const char *s, char sep)
 {
@@ -25,19 +42,7 @@ int	counter1(const char *s, char sep)
 			i++;
 		if (s[i])
 			count++;
-		while (s[i])
-		{
-			if ((s[i] == '\'' || s[i] == '\"'))
-			{
-				if (!quote)
-					quote = s[i];
-				else if (quote == s[i])
-					quote = 0;
-			}
-			if (s[i] == sep && !quote)
-				break ;
-            i++;
-		}
+		counter2(s, sep, &i, &quote);
 	}
 	return (count);
 }

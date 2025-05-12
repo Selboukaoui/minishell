@@ -6,7 +6,7 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 20:55:45 by selbouka          #+#    #+#             */
-/*   Updated: 2025/05/09 19:39:54 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:50:58 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ char	*ft_strndup(const char *str, char n)
 	s[i] = '\0';
 	return (s);
 }
-
 
 static char	**loop(const char *s, char **array, int c)
 {

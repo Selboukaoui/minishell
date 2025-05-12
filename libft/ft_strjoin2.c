@@ -6,35 +6,41 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 22:21:01 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/09 19:40:39 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:58:54 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strjoin2(char *s1, char *s2, int to_free)
+void	full_var(char *s1, char *s2, int *l1, int *l2)
 {
-    size_t  len1 = s1 ? ft_strlen(s1) : 0;
-    size_t  len2 = s2 ? ft_strlen(s2) : 0;
-    char   *res = ft_malloc(len1 + len2 + 1, 1);
+	if (s1)
+		*l1 = ft_strlen (s1);
+	else
+		*l1 = 0;
+	if (s2)
+		*l2 = ft_strlen (s2);
+	else
+		*l2 = 0;
+}
 
-    if (!res)
-        return (NULL);
+char	*ft_strjoin2(char *s1, char *s2, int to_free)
+{
+	size_t	len1;
+	size_t	len2;
+	char	*res;
 
-    if (s1)
-        ft_strcpy(res, s1);
-    else
-        res[0] = '\0';
-
-    if (s2)
-        ft_strcat(res, s2);
-
-    res[len1 + len2] = '\0';
-    to_free = 0;
-    // if (to_free & 1)
-    //     free(s1);
-    // if (to_free & 2)
-    //     free(s2);
-
-    return (res);
+	full_var(s1, s2, &len1, &len1);
+	res = ft_malloc(len1 + len2 + 1, 1);
+	if (!res)
+		return (NULL);
+	if (s1)
+		ft_strcpy(res, s1);
+	else
+		res[0] = '\0';
+	if (s2)
+		ft_strcat(res, s2);
+	res[len1 + len2] = '\0';
+	to_free = 0;
+	return (res);
 }
