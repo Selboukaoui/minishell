@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 17:31:21 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/12 11:26:58 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/12 22:02:16 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,23 +69,41 @@ int				find_token_pos(const char *rl, const char *s, int last_pos);
 t_lexer_list	*create_lexer_list(char **input_array);
 t_lexer_list	*allocate_lexer_nodes(int size);
 int				count_input_array(char **input_array);
-int	handle_expand_home(const char *in,
-    char **res, int *i, t_shell *shell);
-void	process_variable(const char *segment,
-        char **res, int *i, t_shell *shell);
-int	handle_expand_variable(const char *in,
-            char **res, int *i, t_shell *shell);
-void	process_home(const char *segment,
-                char **res, int *i, t_shell *shell);
-char	*segment_expand(const char *segment, t_shell *shell);
-char	*process_export_segment(const char *seg, t_shell *shell);
-char	*expand_variables(const char *input, t_shell *shell);
-int	handle_skip_heredoc(const char *in, char **res, int *i);
-int	should_toggle_squote(char c, int skip_word);
-void	append_char(char **res, const char *src, int len);
-void	process_skip_word(const char *segment,
-    char **res, int *i, int *skip_word);
-char	*get_env_value2(const char *key, t_shell *shell);
-char	*ft_strtrim1(const char *s1);
-int	is_cmdline_empty(const char *cmdline);
+int				handle_expand_home(const char *in, \
+char **res, int *i, t_shell *shell);
+void			process_variable(const char *segment, \
+char **res, int *i, t_shell *shell);
+int				handle_expand_variable(const char *in, \
+char **res, int *i, t_shell *shell);
+void			process_home(const char *segment, \
+char **res, int *i, t_shell *shell);
+char			*segment_expand(const char *segment, t_shell *shell);
+char			*process_export_segment(const char *seg, t_shell *shell);
+char			*expand_variables(const char *input, t_shell *shell);
+int				handle_skip_heredoc(const char *in, char **res, int *i);
+int				should_toggle_squote(char c, int skip_word);
+void			append_char(char **res, const char *src, int len);
+void			process_skip_word(const char *segment, \
+char **res, int *i, int *skip_word);
+char			*get_env_value2(const char *key, t_shell *shell);
+char			*ft_strtrim1(const char *s1);
+int				is_cmdline_empty(const char *cmdline);
+void			*ft_realloc(void *ptr, size_t old_size, size_t new_size);
+size_t			parse_var_name(const char *str, char **out_var);
+char			*expand_present_var(const char *trimmed, t_shell *shell);
+char			*expand_absent_var(const char *trimmed, \
+size_t var_len, t_shell *shell);
+char			*expand_vars_in(const char *src, t_shell *shell);
+char			*process_single_chunk(char *chunk, t_shell *shell);
+void			append_chunk(char **dst, \
+size_t *dst_len, const char *src, size_t len);
+size_t			process_double_redirect(char **out, size_t *out_len);
+size_t			process_single_operator(char **out, \
+size_t *out_len, char sym);
+size_t			process_regular_char(char **out, \
+size_t *out_len, const char *in);
+void			app_result(char **pres);
+const char		*skip_leading_spaces(const char *s);
+void			minishell_loop(t_shell *shell);
+bool			check_tty(void);
 #endif

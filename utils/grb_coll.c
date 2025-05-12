@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   grb_coll.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 20:00:22 by selbouka          #+#    #+#             */
-/*   Updated: 2025/05/10 15:04:31 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/12 21:56:11 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,14 @@ void	*ft_malloc(size_t size, int mode)
 		head = NULL;
 	}
 	return (data);
+}
+
+bool	check_tty(void)
+{
+	if (!isatty(STDIN_FILENO) || !isatty(STDOUT_FILENO))
+	{
+		ft_malloc(0, 0);
+		return (false);
+	}
+	return (true);
 }

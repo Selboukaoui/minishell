@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 12:27:05 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/11 12:11:30 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/12 22:27:04 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,24 @@ t_lexer_list	*lexer(t_shell *shell)
 	return (shell->lex_head);
 }
 
-int	check_syntax(t_shell *input)
+int	check_syntax(char *input)
 {
 	int	j;
 
 	j = 0;
-	if (!check_redirect_in(input->rl_input, j) || \
-		!check_redirect_out(input->rl_input, j))
+	if (!check_redirect_in(input, j) || \
+		!check_redirect_out(input, j))
 	{
 		exit_status(EXIT_SET, 2);
 		return (0);
 	}
-	if (!check_quote_syntax(input->rl_input))
+	if (!check_quote_syntax(input))
 	{
 		ft_putstr_fd("minishell:  syntax error !!\n", 2);
 		exit_status(EXIT_SET, 2);
 		return (0);
 	}
-	if (!check_pipe(input->rl_input))
+	if (!check_pipe(input))
 	{
 		ft_putstr_fd("minishell:  syntax error near unexpected token `|'\n", 2);
 		exit_status(EXIT_SET, 2);
