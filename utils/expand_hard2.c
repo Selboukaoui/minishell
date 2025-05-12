@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 17:21:28 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/12 11:41:48 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/12 14:24:19 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,14 +153,14 @@ static char *expand_vars_in(const char *src, t_shell *shell)
     { 
         // Skip this $var and check for next one
         const char *next = skip_leading_spaces(trimmed + j);
+        if (ft_strncmp(next, "echo", 4) == 0)
+            return change_all_var(next, shell);
         if (*next == '$')
             return expand_vars_in(next, shell);
         // Nothing to expand
         return NULL;
     }
 }
-
-
 
 char    *process_line_expand_first_var(char *line, t_shell *shell)
 {
@@ -177,7 +177,12 @@ char    *process_line_expand_first_var(char *line, t_shell *shell)
     while (parts[i])
     {
         trimmed = (char *)skip_leading_spaces(parts[i]);
-        // if (ft_strncmp(trimmed, "echo", 4) == 0)
+        if (ft_strncmp(trimmed, "echo", 4) == 0)
+        {
+            expanded = change_all_var(parts[i], shell);
+            if (expanded)
+                parts[i] = expanded;
+        }
         if (*trimmed == '$')// if NULL
         {
             expanded = expand_vars_in(trimmed, shell);
