@@ -6,18 +6,38 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 12:15:09 by selbouka          #+#    #+#             */
-/*   Updated: 2025/05/09 21:24:58 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/12 14:36:18 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+void	counter2(const char *s, char sep, int *i, char *quote)
+{
+	while (s[*i])
+	{
+		if ((s[*i] == '\'' || s[*i] == '\"'))
+		{
+			if (!(*quote))
+				*quote = s[*i];
+			else if ((*quote) == s[*i])
+				*quote = 0;
+		}
+		if (s[*i] == sep && !(*quote))
+			break ;
+		(*i)++;
+	}
+}
+
 static int	counter(const char *s, char sep)
 {
-	int	i = 0;
-	int	count = 0;
-	char	quote = 0;
+	int		i;
+	int		count;
+	char	quote;
 
+	i = 0;
+	count = 0;
+	quote = 0;
 	if (!s)
 		return (0);
 	while (s[i])
@@ -26,49 +46,48 @@ static int	counter(const char *s, char sep)
 			i++;
 		if (s[i])
 			count++;
-		while (s[i])
-		{
-			if ((s[i] == '\'' || s[i] == '\"'))
-			{
-				if (!quote)
-					quote = s[i];
-				else if (quote == s[i])
-					quote = 0;
-			}
-			if (s[i] == sep && !quote)
-				break;
-			i++;
-		}
+		counter2(s, sep, &i, &quote);
 	}
 	return (count);
 }
 
+int	loop2(const char *s, char sep, int *j, char *quote)
+{
+	int	start;
+
+	while (s[*j] == sep && !(*quote))
+		(*j)++;
+	start = *j;
+	while (s[*j])
+	{
+		if ((s[*j] == '\'' || s[*j] == '\"'))
+		{
+			if (!(*quote))
+				*quote = s[*j];
+			else if ((*quote) == s[*j])
+				*quote = 0;
+		}
+		if (s[*j] == sep && !(*quote))
+			break ;
+		(*j)++;
+	}
+	return (start);
+}
+
 static char	**loop(const char *s, char **array, char sep)
 {
-	int		i = 0;
-	int		j = 0;
+	int		i;
+	int		j;
 	int		start;
-	char	quote = 0;
+	char	quote;
 	char	*tmp;
 
+	i = 0;
+	j = 0;
+	quote = 0;
 	while (s[j])
 	{
-		while (s[j] == sep && !quote)
-			j++;
-		start = j;
-		while (s[j])
-		{
-			if ((s[j] == '\'' || s[j] == '\"'))
-			{
-				if (!quote)
-					quote = s[j];
-				else if (quote == s[j])
-					quote = 0;
-			}
-			if (s[j] == sep && !quote)
-				break;
-			j++;
-		}
+		start = loop2(s, sep, &j, &quote);
 		if (j > start)
 		{
 			tmp = ft_strndup(s + start, s[j]);
@@ -81,7 +100,6 @@ static char	**loop(const char *s, char **array, char sep)
 	return (array);
 }
 
-
 char	**ft_split1(char const *s, char c)
 {
 	char	**array;
@@ -93,4 +111,3 @@ char	**ft_split1(char const *s, char c)
 		return (NULL);
 	return (loop(s, array, c));
 }
-
