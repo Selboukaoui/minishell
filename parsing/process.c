@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:58:23 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/11 17:29:19 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/13 13:51:11 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 bool	open_outputfile(t_executor *current, t_lexer_list *lexer)
 {
-	if (!lexer || !lexer->str)
+	if (!lexer || !lexer->str || lexer->type != 1)
 	{
 		ft_putstr_fd("minishell: ambiguous redirect\n", STDERR_FILENO);
+		exit_status(1, 1);
 		return (false);
 	}
 	if (current->append)
@@ -45,13 +46,14 @@ int	process_in_heredoc(t_executor *cur, t_lexer_list *lex, t_shell *sh)
 	if (!lex->next || !lex->next->str)
 	{
 		ft_putstr_fd("minishell: ambiguous redirect\n", STDERR_FILENO);
+		exit_status(1, 1);
 		return (FAILED);
 	}
 	if (lex->type == HEREDOC)
 	{
 		cur->fd_in = create_heredoc(lex->next->str, sh);
 		if (cur->fd_in == -1 || cur->fd_in == -2)
-			return (FAILED);
+			return (exit_status(1, 130), FAILED);
 	}
 	else
 	{

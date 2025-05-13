@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 21:33:32 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/09 19:32:15 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/13 14:43:44 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,15 +86,38 @@ void	int_to_str(int num, char *str)
 	str[len] = '\0';
 }
 
+// char	*get_env_value(t_environ_list *env_list, char *key)
+// {
+// 	t_environ_node	*cur;
+
+// 	cur = env_list->head;
+// 	while (cur)
+// 	{
+// 		if (ft_strcmp(cur->key, key) == 0)
+// 			return (cur->value);
+// 		cur = cur->next;
+// 	}
+// 	return (NULL);
+// }
 char	*get_env_value(t_environ_list *env_list, char *key)
 {
 	t_environ_node	*cur;
 
+	char			*p;
 	cur = env_list->head;
 	while (cur)
 	{
 		if (ft_strcmp(cur->key, key) == 0)
+		{
+			p = cur->value;
+			while (*p)
+			{
+				if (*p == '$')
+					*p = '\x01';
+				p++;
+			}
 			return (cur->value);
+		}
 		cur = cur->next;
 	}
 	return (NULL);

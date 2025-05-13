@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 10:34:20 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/06 15:03:15 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/13 12:26:18 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,5 @@ bool	is_builtin(char *exec)
 		|| ft_strcmp(exec, "export") == 0
 		|| ft_strcmp(exec, "unset") == 0
 		|| ft_strcmp(exec, "env") == 0
-		|| ft_strcmp(exec, ":") == 0
 		|| ft_strcmp(exec, "exit") == 0);
 }

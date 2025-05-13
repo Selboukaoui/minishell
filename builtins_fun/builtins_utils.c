@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 12:39:36 by selbouka          #+#    #+#             */
-/*   Updated: 2025/05/09 14:59:28 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/13 14:13:48 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ bool	is_valid_identifier(char *str)
 	int	i;
 
 	i = 0;
-	if (!str || !*str || ft_isdigit(str[0]) || str[0] == '=')
+	if (!str || !*str || ft_isdigit(str[0]) || str[0] == '=' || str[0] == '$')
 		return (false);
 	while (str[i] && str[i] != '=')
 	{

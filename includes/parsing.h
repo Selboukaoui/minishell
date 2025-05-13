@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 17:31:21 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/12 22:02:16 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/13 11:39:10 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ char			*expand_vars_in(const char *src, t_shell *shell);
 char			*process_single_chunk(char *chunk, t_shell *shell);
 void			append_chunk(char **dst, \
 size_t *dst_len, const char *src, size_t len);
-size_t			process_double_redirect(char **out, size_t *out_len);
+size_t			process_double_redirect(char **out, size_t *out_len, int flag);
 size_t			process_single_operator(char **out, \
 size_t *out_len, char sym);
 size_t			process_regular_char(char **out, \

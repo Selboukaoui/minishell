@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 21:47:29 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/12 22:35:02 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/13 14:54:59 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,23 +49,60 @@ static	char	*preprocess_input(char *raw, t_shell *shell)
 	processed = clean_rl_copy(raw);
 	free(raw);
 	processed = process_line_expand_first_var(processed, shell);
+	printf("1-------------->[%s]\n", processed);
 	if (!processed)
 		return (NULL);
 	processed = handle_dollar_quotes(processed);
+	printf("2-------------->[%s]\n", processed);
 	if (!processed)
 		return (NULL);
 	processed = replace_var_equals_var(processed, shell);
+	printf("3-------------->[%s]\n", processed);
 	if (!processed)
 		return (NULL);
 	processed = export_hard(processed, shell);
+	printf("4-------------->[%s]\n", processed);
 	return (processed);
+}
+void replace_soh_with_dollar_in_env(t_environ_list *env_list)
+{
+    t_environ_node *current = env_list->head;
+
+    while (current != NULL)
+    {
+        char *value_ptr = current->value;
+        while (value_ptr != NULL && *value_ptr != '\0')
+        {
+            if (*value_ptr == '\x01')
+            {
+                *value_ptr = '$';
+            }
+            value_ptr++;
+        }
+        current = current->next;
+    }
+}
+
+void replace_soh_with_dollar(char *str)
+{
+    char *p = str;
+    while (p && *p) {
+        if (*p == '\x01') {
+            *p = '$';
+        }
+        p++;
+    }
 }
 
 static	void	parse_and_execute(t_shell *shell)
 {
 	shell->rl_copy = replace_vars1(shell->rl_input, shell);
+	printf("5-------------->[%s]\n", shell->rl_copy);
+	replace_soh_with_dollar(shell->rl_copy);
+	replace_soh_with_dollar_in_env(shell->env);
 	if (!shell->rl_copy)
 		return ;
+	
 	if (!parser(shell))
 		return ;
 	executor(shell);

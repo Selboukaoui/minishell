@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 11:02:15 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/12 11:10:40 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/13 15:27:30 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ char	*segment_expand(const char *segment, t_shell *shell)
 			skip_word = handle_skip_heredoc(segment, &res, &i);
 		else if (skip_word)
 			process_skip_word(segment, &res, &i, &skip_word);
+		else if (!in_squote && segment[i] == '$' && (!ft_isalnum(segment[i + 1]) && segment[i + 1] != '_' && segment[i + 1] != '?'))
+        {
+            append_char(&res, "$", 1);
+            i += 1;
+        }
 		else if (!in_squote && segment[i] == '$')
 			process_variable(segment, &res, &i, shell);
 		else if (!in_squote && segment[i] == '~' && i == 0

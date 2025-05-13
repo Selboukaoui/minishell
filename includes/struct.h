@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 17:32:07 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/11 17:49:46 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/13 13:50:58 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_lexer_list
 	t_token				type;
 	struct s_lexer_list	*prev;
 	struct s_lexer_list	*next;
-	int					no_split;
+	// int					no_split;
 }	t_lexer_list;
 
 typedef struct s_executor

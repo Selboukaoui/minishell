@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 10:41:04 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/10 10:50:56 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/13 15:23:58 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ int	export_args(t_shell *shell, char **args)
 			ft_putstr_fd(args[i], STDERR_FILENO);
 			ft_putstr_fd("': not a valid identifier\n", STDERR_FILENO);
 			ret = EXIT_FAILURE;
+			exit_status(1, 1);
 			continue ;
 		}
 		exporting(shell, args[i]);

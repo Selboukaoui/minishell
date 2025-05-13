@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:00:30 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/11 11:12:28 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/13 10:59:44 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	write_value(t_varctx *ctx, const char *val)
 {
 	bool	wrap;
 
+	if (!val)
+		return ;
 	wrap = !(ctx->double_s);
 	if (wrap)
 		ctx->out[ctx->pos[1]++] = '"';

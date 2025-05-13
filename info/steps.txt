@@ -1,65 +1,11 @@
-minishell-1.0$~ ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls  | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls | ls |ls | ls | ls                                                                                                     | ls |ls | l
-[1]    35056 segmentation fault (core dumped)  ./minishell
-makfile;
-./minishell || ./a.out (minishell nichan)
-env -i 2 fois 
-ctrl d
-export parssing like export a="a b c" & export a=$a
-
-<< end1 cat | << 'end2' cat
-
-asebban@e1r10p15:~/Desktop/minishell$ << end1 cat | << 'end2' cat
-> ls
-> ctrl+d
-bash: warning: here-document at line 1 delimited by end-of-file (wanted `end1')
-> ctrl+d
-bash: warning: here-document at line 2 delimited by end-of-file (wanted `end2')
-
-➜  shell_with_selbouka git:(main) ✗ ./minishell
-minishell-1.0$~ echo hello > ajhsg
-➜  shell_with_selbouka git:(main) ✗ cat ajhsg 
-hello
-minishell-1.0$~ 
-exit
-(all bultin redirection)
 
 
-[only spaces] and run sahm lfo9 for check history
+pwd//
 
-command :
-command !
-
-syntax error is not like bash
-
-
-export $A=$b
-export a="ls | hgasgd"
-$A
-ctrl + / in child
-
-minishell-1.0$~ ls > $ghgh
-minishell: syntax error
-minishell-1.0$~ $?
-\minishell: command not found: 2
-
-minishell-1.0$~ export a="ls '-la'"
-minishell-1.0$~ $a
-
-
-minishell-1.0$~ chmod 000 test 
-minishell-1.0$~ ls > test 
-test: Permission denied
-minishell-1.0$~ $?
-minishell: command not found: 0
-'
-asebban@e1r13p1:~/Desktop/shell_with_selbouka$ exit 34 343
-exit
-bash: exit: too many arguments
 asebban@e1r13p1:~/Desktop/shell_with_selbouka$ $?
 1: command not found
 asebban@e1r13p1:~/Desktop/shell_with_selbouka$ 
 
-ctrl d ---> akhir exit status
 
 ""
 
@@ -68,68 +14,17 @@ bash: export: `=': not a valid identifier
 asebban@e1r13p1:~/Desktop/shell_with_selbouka$ $?
 1: command not found
 
-➜  shell_with_selbouka git:(main) ✗ env -i ./minishell 
-minishell-1.0$~ 
-minishell-1.0$~ unset PATH
-minishell-1.0$~ minishell 
-minishell: command not found: minishell
-minishell-1.0$~ minishell 
-minishell: command not found: minishell
-minishell-1.0$~ exit
-➜  shell_with_selbouka git:(main) ✗ ./minishell 
-minishell-1.0$~ minishell
-minishell: command not found: minishell
-minishell-1.0$~ folder/ls
-builtins_fun  folder  includes  libft  main.c  Makefile   parsing  utils
-executor      gfg     info      ls     main.o  minishell  s        ztesting
-
-
-ls > b | cat < b
-
-
- '"'"'---$HOME----'+PWD---'"'"'
 
 unset _ 
 
-export x="ls <tab> -la"
-
-
-bash: '/home/selbouka/1337project/shell': No such file or directory
-selbouka@e1r13p4:~/1337project/shell$ """'$HOME____$PWD"""'
-> 
-
-
-
-
-
-
-
 bash: $./dwjadj: No such file or directory
-
-minishell-1.0$~ cat << $USER
-> selbouka
- 
-
-env ls
-
-exit | ls
-
 
 export $a=$b | << $PATH
 
  l's' -la | ls '>' --> segmentation fault
 
- ls="ls > la" with echo
- '     $PATH'
 
- "" | "" |""
-
- minishell-1.0$~ < Makefile  cat -e > pp
-minishell-1.0$~ cat pp
-cat: pp: No such file or directory
-
-minishell-1.0$~ ls > kik
-minishell-1.0$~ cat kik
-cat: kik: No such file or directory
 
 $./fgashj
+
+$.
