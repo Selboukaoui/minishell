@@ -14,9 +14,8 @@
 
 int	g_signals;
 
-static	void	ft_usage(t_shell *shell)
+static	void	ft_usage(void)
 {
-	(void)shell;
 	printf("\033[0;31mUsage: ./minishell\033[0m\n");
 }
 
@@ -27,7 +26,7 @@ int	main(int ac, char **av, char **env)
 	shell = NULL;
 	(void)av;
 	if (ac != 1)
-		return (ft_usage(shell), 1);
+		return (ft_usage(), 1);
 	g_signals = 1;
 	rl_catch_signals = 0;
 	shell = init_shell(env);
