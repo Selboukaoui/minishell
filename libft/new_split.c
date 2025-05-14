@@ -6,26 +6,13 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 18:42:54 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/14 18:43:48 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/14 19:53:20 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <string.h>
-
-// Duplicate a substring of length len
-static char *ft_strndup(const char *s, size_t len)
-{
-    char *dup = malloc(len + 1);
-    if (!dup)
-        return NULL;
-    memcpy(dup, s, len);
-    dup[len] = '\0';
-    return dup;
-}
+#include "libft.h"
 
 // A simple malloc wrapper (replace with your own allocator if needed)
-#define ft_malloc(sz, flag) malloc(sz)
 
 /*
  * Count how many tokens the input will split into:
@@ -33,7 +20,7 @@ static char *ft_strndup(const char *s, size_t len)
  *  - Treats unquoted "<<" as a standalone token
  *  - Honors single- and double-quote pairing
  */
-static int count_tokens(const char *s)
+static int count_tokens1(const char *s)
 {
     int  i = 0, count = 0;
     char quote = 0;
@@ -138,7 +125,7 @@ char **ft_split2(const char *s, char c /* must be ' ' here */)
     if (!s)
         return NULL;
 
-    n = count_tokens(s);
+    n = count_tokens1(s);
     array = ft_malloc(sizeof(char *) * (n + 1), 1);
     if (!array)
         return NULL;
