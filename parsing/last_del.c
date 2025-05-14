@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   last_del.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:14:41 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/11 17:19:54 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/14 18:52:44 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ static	char	*get_last_heredoc_delimiter(const char *cmdline)
 			if (len > 0)
 				last = ft_strndup(cmdline + start, len);
 		}
-		++i;
+		else
+			i++;
 	}
 	return (last);
 }

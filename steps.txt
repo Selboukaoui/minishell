@@ -2,17 +2,12 @@
 
 pwd//
 
-asebban@e1r13p1:~/Desktop/shell_with_selbouka$ $?
-1: command not found
-asebban@e1r13p1:~/Desktop/shell_with_selbouka$ 
-
-
-""
-
 asebban@e1r13p1:~/Desktop/shell_with_selbouka$ export ewr = erwr
 bash: export: `=': not a valid identifier
 asebban@e1r13p1:~/Desktop/shell_with_selbouka$ $?
 1: command not found
+
+ktrje3 0
 
 
 bash: $./dwjadj: No such file or directory
@@ -26,10 +21,10 @@ export $a=$b | << $PATH
 $./fgashj
 
 $.
+'<''<'
 
-"<<"
-<<$PATH
-<< $PATH
+
+
 unset PATH
 ./minishell
 ls "should work"
