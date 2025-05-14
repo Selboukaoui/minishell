@@ -26,3 +26,19 @@ export $a=$b | << $PATH
 $./fgashj
 
 $.
+
+
+
+
+unset PATH
+./minishell
+ls "should work"
+
+
+exit "should exit with last status when no args"
+
+
+$1HOME
+
+exit 99999999999999999999999999999999999999999999999999999999999999999999999999 1
+exit: 999999999999999999999999999999999999999999999999999999999999999999999: numeric argument required

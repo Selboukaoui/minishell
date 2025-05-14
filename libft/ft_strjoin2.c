@@ -6,7 +6,7 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 22:21:01 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/12 14:07:48 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/14 13:36:26 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ char	*ft_strjoin2(char *s1, char *s2, int to_free)
 	size_t	len2;
 	char	*res;
 
+	(void)to_free;
 	full_var(s1, s2, &len1, &len2);
 	res = ft_malloc(len1 + len2 + 1, 1);
 	if (!res)

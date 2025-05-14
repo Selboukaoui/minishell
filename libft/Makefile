@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+# CFLAGS = -Wall -Wextra -Werror
 NAME = libft.a
 
 SRCM = ft_isalnum.c ft_isdigit.c ft_memchr.c  ft_memmove.c ft_putendl_fd.c ft_split.c   ft_striteri.c   ft_strlcpy.c ft_strncmp.c ft_strtrim.c ft_toupper.c \

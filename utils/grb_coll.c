@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   grb_coll.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 20:00:22 by selbouka          #+#    #+#             */
-/*   Updated: 2025/05/14 12:28:37 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/14 13:37:16 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	err(int c)
 {
-	c = 1;
+	(void)c;
 	printf ("Allocation failed\n");
 	return (0);
 }

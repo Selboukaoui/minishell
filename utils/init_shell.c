@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 14:42:18 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/06 18:26:07 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/14 13:26:29 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ t_environ_list	*init_environ(char **envp)
 	env = (t_environ_list *)ft_malloc(sizeof(t_environ_list), 1);
 	if (!env)
 		return (NULL);
+	env->head = NULL;
 	if (!*envp)
 		return (empty_environ(env));
 	while (*envp)

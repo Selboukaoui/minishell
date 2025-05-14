@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_loop.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 21:47:29 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/14 12:27:01 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/14 13:35:48 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static	char	*preprocess_input(char *raw, t_shell *shell)
 	if (!check_syntax(raw))
 	{
 		free(raw);
-		ft_malloc(0, 0);
+		// ft_malloc(0, 0);
 		return (NULL);
 	}
 	processed = clean_rl_copy(raw);
