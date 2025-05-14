@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 17:21:28 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/12 21:34:59 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/14 17:13:32 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ char	*process_line_expand_first_var(char *line, t_shell *shell)
 	char	**parts;
 	size_t	i;
 	char	*result;
+	int		j;
+	int		skip_herdoc;
 
 	parts = ft_split1(line, '|');
 	if (!parts)
@@ -55,7 +57,19 @@ char	*process_line_expand_first_var(char *line, t_shell *shell)
 	i = 0;
 	while (parts[i])
 	{
-		parts[i] = process_single_chunk(parts[i], shell);
+		skip_herdoc = 0;
+		j = 0;
+		while (parts[i][j])
+		{
+			if (parts[i][j] == '<' && parts[i][j + 1] == '<')
+			{
+				skip_herdoc = 1;
+				break ;
+			}
+			j++;
+		}
+		if (!skip_herdoc)
+			parts[i] = process_single_chunk(parts[i], shell);
 		i++;
 	}
 	result = join_with_pipes(parts);
