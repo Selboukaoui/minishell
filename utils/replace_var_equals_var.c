@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 11:52:22 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/14 18:41:07 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/14 22:11:30 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*replace_var_equals_var(char *input, t_shell *shell)
 
 	if (!input || !shell)
 		return (NULL);
-	tokens = ft_split2(input, ' ');
+	tokens = split_heredoc(input);
 	if (!tokens)
 		return (NULL);
 	output = process_tokens(tokens, shell);

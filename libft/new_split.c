@@ -6,129 +6,94 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 18:42:54 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/14 19:53:20 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/14 22:11:07 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// A simple malloc wrapper (replace with your own allocator if needed)
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdio.h>
 
-/*
- * Count how many tokens the input will split into:
- *  - Skips spaces outside quotes
- *  - Treats unquoted "<<" as a standalone token
- *  - Honors single- and double-quote pairing
- */
-static int count_tokens1(const char *s)
-{
-    int  i = 0, count = 0;
-    char quote = 0;
+/* Dynamic array of strings */
+typedef struct {
+    char **items;
+    size_t  count, capacity;
+} str_array;
 
-    while (s[i])
-    {
-        // Skip spaces outside quotes
-        while (s[i] == ' ' && !quote)
-            i++;
-        if (!s[i])
-            break;
-        count++;  // one new token
+static void arr_init(str_array *a) {
+    a->count = 0;
+    a->capacity = 8;
+    a->items = malloc(sizeof(char*) * a->capacity);
+}
 
-        // If here-doc operator unquoted, consume it
-        if (!quote && s[i] == '<' && s[i + 1] == '<')
-        {
-            i += 2;
-        }
-        else
-        {
-            // Otherwise, scan until next space or << outside quotes
-            while (s[i])
-            {
-                if ((s[i] == '\'' || s[i] == '\"'))
-                {
-                    if (!quote)
-                        quote = s[i];
-                    else if (quote == s[i])
-                        quote = 0;
-                }
-                if (!quote && (s[i] == ' ' || (s[i] == '<' && s[i + 1] == '<')))
-                    break;
-                i++;
-            }
-        }
+static void arr_push(str_array *a, char *s) {
+    if (a->count + 1 > a->capacity) {
+        a->capacity *= 2;
+        a->items = realloc(a->items, sizeof(char*) * a->capacity);
     }
-    return count;
+    a->items[a->count++] = s;
+}
+
+static void arr_finish(str_array *a) {
+    arr_push(a, NULL);
 }
 
 /*
- * Fill the provided array with tokens, using the same logic as count_tokens().
+ * Return 2 if s starts with "<<", else 0.
  */
-static char **lex_heredoc(const char *s, char **out)
-{
-    int  i = 0, tok = 0;
-    char quote = 0;
-    int  start, len;
-
-    while (s[i])
-    {
-        // Skip spaces outside quotes
-        while (s[i] == ' ' && !quote)
-            i++;
-        if (!s[i])
-            break;
-        start = i;
-
-        // If here-doc operator unquoted, consume it
-        if (!quote && s[i] == '<' && s[i + 1] == '<')
-        {
-            i += 2;
-        }
-        else
-        {
-            // Otherwise, scan until next space or << outside quotes
-            while (s[i])
-            {
-                if ((s[i] == '\'' || s[i] == '\"'))
-                {
-                    if (!quote)
-                        quote = s[i];
-                    else if (quote == s[i])
-                        quote = 0;
-                }
-                if (!quote && (s[i] == ' ' || (s[i] == '<' && s[i + 1] == '<')))
-                    break;
-                i++;
-            }
-        }
-
-        // Duplicate the token substring
-        len = i - start;
-        out[tok++] = ft_strndup(s + start, len);
-        if (!out[tok - 1])
-            return NULL;
-    }
-    out[tok] = NULL;
-    return out;
+static int heredoc_len(const char *s) {
+    return (s[0]=='<' && s[1]=='<') ? 2 : 0;
 }
 
 /*
- * Public API:
- *  - Splits on spaces and unquoted "<<" only.
- *  - Returns a NULL‑terminated array of malloc’d strings.
+ * Split on whitespace, quote-groups, and heredoc only.
  */
-char **ft_split2(const char *s, char c /* must be ' ' here */)
-{
-    char **array;
-    int    n;
+char **split_heredoc(const char *s) {
+    str_array toks;
+    arr_init(&toks);
 
-    (void)c;  // only spaces + here-doc supported
-    if (!s)
-        return NULL;
+    size_t i = 0, n = strlen(s);
+    while (i < n) {
+        /* skip spaces */
+        while (i < n && isspace((unsigned char)s[i])) i++;
+        if (i >= n) break;
 
-    n = count_tokens1(s);
-    array = ft_malloc(sizeof(char *) * (n + 1), 1);
-    if (!array)
-        return NULL;
+        /* heredoc operator? */
+        int hlen = heredoc_len(s + i);
+        if (hlen) {
+            arr_push(&toks, strndup(s + i, hlen));
+            i += hlen;
+            continue;
+        }
 
-    return lex_heredoc(s, array);
+        /* quoted string */
+        if (s[i]=='\'' || s[i]=='\"') {
+            char q = s[i++];
+            size_t start = i-1;
+            while (i < n && s[i]!=q) {
+                if (s[i]=='\\' && i+1<n && s[i+1]==q) i+=2;
+                else i++;
+            }
+            if (i<n) i++;  /* include closing quote */
+            arr_push(&toks, strndup(s + start, i - start));
+            continue;
+        }
+
+        /* bare word */
+        size_t start = i;
+        while (i < n
+           && !isspace((unsigned char)s[i])
+           && !(s[i]=='<' && s[i+1]=='<')
+           && s[i] != '\'' && s[i] != '\"')
+        {
+            i++;
+        }
+        arr_push(&toks, strndup(s + start, i - start));
+    }
+
+    arr_finish(&toks);
+    return toks.items;
 }

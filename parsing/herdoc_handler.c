@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:34:49 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/14 12:23:27 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/14 21:21:08 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,16 @@ void	heredoc_child_loop(int write_fd,
 	while (true)
 	{
 		line = readline("> ");
+		if (g_signals == 130)
+		{
+			(free(line), ft_malloc(0, 0));
+			exit(130);
+		}
 		if (!line)
 		{
 			handle_eof(delimiter);
 			ft_malloc(0, 0);
 			exit(0);
-		}
-		if (g_signals == 130)
-		{
-			(free(line), ft_malloc(0, 0));
-			exit(130);
 		}
 		if (is_delimiter(line, delimiter))
 		{
@@ -95,9 +95,10 @@ static	int	wait_and_return_heredoc(int pid, int read_fd)
 
 	(void)read_fd;
 	waitpid(pid, &status, 0);
+
 	if (WIFEXITED(status))
 	{
-		if (status == 33280)
+		if (WEXITSTATUS(status) == 130)
 		{
 			close(read_fd);
 			return (-2);
