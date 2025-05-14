@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:42:43 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/13 15:09:04 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/13 17:21:14 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static	void	handle_fork_execution(t_shell *shell)
 	{
 		if (status == 131)
 			(printf("Quit (core dumped)\n"), exit_status(EXIT_SET, 131));
-		else
+		else if (status == 2)
 			(printf("\n"), exit_status(EXIT_SET, 128 + WTERMSIG(status)));
 	}
 	else

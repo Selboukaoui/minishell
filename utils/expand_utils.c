@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 21:24:39 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/13 12:03:22 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/14 10:51:44 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ char	*expand_present_var(const char *trimmed, t_shell *shell)
 {
 	char	*result;
 
-	result = ft_replace_var3(trimmed, shell, 1); // flag for app_result
-	// app_result(&result);
+	result = ft_replace_var3(trimmed, shell, 1);
 	return (result);
 }
 
@@ -39,8 +38,8 @@ char	*expand_absent_var(const char *trimmed,
 	const char	*next;
 
 	next = skip_leading_spaces(trimmed + var_len);
-	if (ft_strncmp(next, "echo", 4) == 0) // check
-		return (change_all_var(next, shell)); // check
+	if (ft_strncmp(next, "echo", 4) == 0)
+		return (change_all_var(next, shell));
 	if (ft_strncmp(next, "export", 6) != 0)
 		return (expand_present_var(trimmed, shell));
 	return (NULL);
@@ -61,7 +60,6 @@ char	*expand_vars_in(const char *src, t_shell *shell)
 	{
 		var_len = parse_var_name(trimmed, &first_var);
 		first_val = get_env_value(shell->env, first_var);
-		// printf("%s", first_val);
 	}
 	if (first_val)
 		return (expand_present_var(trimmed, shell));

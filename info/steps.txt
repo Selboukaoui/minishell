@@ -15,8 +15,6 @@ asebban@e1r13p1:~/Desktop/shell_with_selbouka$ $?
 1: command not found
 
 
-unset _ 
-
 bash: $./dwjadj: No such file or directory
 
 export $a=$b | << $PATH

@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 11:07:40 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/12 11:12:09 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/14 11:01:27 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,6 @@ static	int	ft_isspace(int c)
 {
 	return (c == ' ' || c == '\t' || c == '\n' || \
 			c == '\v' || c == '\f' || c == '\r');
-}
-
-/* Helper: expand ~ to HOME */
-int	handle_expand_home(const char *in,
-	char **res, int *i, t_shell *shell)
-{
-	char	*val;
-
-	val = get_env_value2("HOME", shell);
-	(void)in;
-	*res = ft_strjoin(*res, val);
-	(*i)++;
-	return (1);
 }
 
 int	handle_skip_heredoc(const char *in, char **res, int *i)

@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 14:32:39 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/13 14:11:13 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/14 10:47:22 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	unset(t_shell *shell, char **args)
 		if (ft_strcmp(args[i], "_") == 0)
 		{
 			i++;
-			continue;
+			continue ;
 		}
 		else if (ft_strcmp(args[i], "PWD") == 0)
 		{

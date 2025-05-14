@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:34:49 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/13 12:20:32 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/14 12:23:27 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ static	void	write_content(int fd,
 	}
 	write(fd, to_write, len);
 	write(fd, "\n", 1);
-	if (!quoted)
-		free(to_write);
 }
 
 void	heredoc_child_loop(int write_fd,
@@ -44,16 +42,21 @@ void	heredoc_child_loop(int write_fd,
 	while (true)
 	{
 		line = readline("> ");
-		if (g_signals == 130)
-			exit(130);
 		if (!line)
 		{
 			handle_eof(delimiter);
+			ft_malloc(0, 0);
 			exit(0);
+		}
+		if (g_signals == 130)
+		{
+			(free(line), ft_malloc(0, 0));
+			exit(130);
 		}
 		if (is_delimiter(line, delimiter))
 		{
 			free(line);
+			ft_malloc(0, 0);
 			exit(0);
 		}
 		write_content(write_fd, line, shell, quoted);

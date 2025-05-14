@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 20:00:22 by selbouka          #+#    #+#             */
-/*   Updated: 2025/05/12 21:56:11 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/14 12:28:37 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,20 @@ int	err(int c)
 	c = 1;
 	printf ("Allocation failed\n");
 	return (0);
+}
+
+void	close_all_fds(void)
+{
+	long	max_fd;
+	long	i;
+
+	i = 3;
+	max_fd = 1024;
+	while (i < max_fd)
+	{
+		close((int)i);
+		i++;
+	}
 }
 
 void	free_all(t_collect **head)
@@ -60,6 +74,7 @@ void	*ft_malloc(size_t size, int mode)
 	else if (mode == 0)
 	{
 		free_all(&head);
+		close_all_fds();
 		head = NULL;
 	}
 	return (data);

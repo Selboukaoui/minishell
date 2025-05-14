@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 12:13:22 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/11 17:12:24 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/14 10:50:05 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ static	char	*resolve_cmd_path_or_exit(t_shell *shell, char *cmd)
 {
 	char		*path;
 	char		*path_env;
-	size_t		len;
-	struct stat	st;
 
 	if (ft_strchr(cmd, '/'))
 		return (cmd);
@@ -44,16 +42,10 @@ static	char	*resolve_cmd_path_or_exit(t_shell *shell, char *cmd)
 	if (!path)
 	{
 		path_env = get_env_value(shell->env, "PATH");
-		if (!path_env || *path_env == '\0')
-		{
-			1 && (len = ft_strlen(cmd) + 3, path = ft_malloc(len, 1));
-			if (!path)
-				(ft_malloc(0, 0), exit(126));
-			ft_memcpy(path, "./", 2);
-			ft_memcpy(path + 2, cmd, ft_strlen(cmd) + 1);
-		}
+		if (!path_env)
+			return (cmd);
 	}
-	if (!path || stat(path, &st) != 0)
+	if (!path)
 		err_for_norm(cmd);
 	return (path);
 }

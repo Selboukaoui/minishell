@@ -2,6 +2,8 @@ A
 a.out
 builtins_fun
 executor
+fdg
+fs
 includes
 info
 libft
@@ -9,8 +11,11 @@ main.c
 main.o
 Makefile
 minishell
+ojl
+ol
 out
 parsing
+pl
 pp
 test.c
 test_cases

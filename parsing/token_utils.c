@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 17:32:46 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/13 12:56:16 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/14 11:28:42 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ int	find_token_pos(const char *rl, const char *s, int last_pos)
 
 t_token	which_type(char *s, int inside)
 {
+	static int	count;
+
 	if (!s)
 		return (EMPTY);
 	if (inside)
@@ -94,7 +96,15 @@ t_token	which_type(char *s, int inside)
 	if (ft_strcmp(s, ">") == 0)
 		return (rederect_out);
 	if (ft_strcmp(s, "<<") == 0)
+	{
+		if (count == 16)
+		{
+			ft_putstr_fd("maximum here-document count exceeded\n", 2);
+			(ft_malloc(0, 0), exit(2));
+		}
+		count ++;
 		return (HEREDOC);
+	}
 	if (ft_strcmp(s, ">>") == 0)
 		return (APPEND);
 	return (CMD);
