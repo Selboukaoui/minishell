@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   last_del.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:14:41 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/15 18:04:45 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/15 20:59:35 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	skip_quates(char **input)
 		}
 		(*input)++;
 	}
-	printf ("skip2 = %s\n", *input);
 	return (1);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 12:15:09 by selbouka          #+#    #+#             */
-/*   Updated: 2025/05/12 14:36:18 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/15 21:06:59 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ int	loop2(const char *s, char sep, int *j, char *quote)
 {
 	int	start;
 
+	if (s[*j] == '\'' || s[*j] == '\"')
+	{
+		*quote = s[*j];
+	}
 	while (s[*j] == sep && !(*quote))
 		(*j)++;
 	start = *j;
