@@ -71,5 +71,8 @@ void			replace_soh_with_dollar(char *str);
 char			*ft_replace_var3(const char *seg, t_shell *shell, int flag);
 void			append_var(const char *seg, t_shell *shell, \
 char *result, int ptrs[3]);
-void	close_all_fds(void);
+void			close_all_fds(void);
+void			fill_replaced_segment(const char *seg, \
+t_shell *shell, char *result, int flag);
+
 #endif

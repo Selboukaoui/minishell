@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 17:32:46 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/14 13:38:20 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/15 13:10:03 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,35 +22,6 @@ int	count_input_array(char **input_array)
 	while (input_array[size])
 		size++;
 	return (size);
-}
-
-t_lexer_list	*allocate_lexer_nodes(int size)
-{
-	t_lexer_list	*head;
-	t_lexer_list	*current;
-	t_lexer_list	*prev;
-	int				i;
-
-	if (size == 0)
-		return (NULL);
-	head = (t_lexer_list *)ft_malloc(sizeof(t_lexer_list), 1);
-	if (!head)
-		return (NULL);
-	1 && (head->prev = NULL, prev = head, i = 1);
-	while (i < size)
-	{
-		current = (t_lexer_list *)ft_malloc(sizeof(t_lexer_list), 1);
-		if (!current)
-		{
-			while (head)
-				1 && (current = head->next, head = current);
-			return (NULL);
-		}
-		1 && (current->prev = prev, prev->next = current, prev = current, i++);
-	}
-	if (size > 0)
-		prev->next = NULL;
-	return (head);
 }
 
 t_lexer_list	*create_lexer_list(char **input_array)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   last_del.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:14:41 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/14 18:52:44 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/15 13:04:20 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ static	char	*get_last_heredoc_delimiter(const char *cmdline)
 	size_t	start;
 	size_t	len;
 
-	i = 0;
-	last = NULL;
+	1 && (i = 0, last = NULL);
 	while (cmdline[i])
 	{
 		if (cmdline[i] == '<' && cmdline[i + 1] == '<')

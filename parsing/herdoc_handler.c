@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:34:49 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/14 21:21:08 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/15 13:32:31 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ static	int	wait_and_return_heredoc(int pid, int read_fd)
 
 	(void)read_fd;
 	waitpid(pid, &status, 0);
-
 	if (WIFEXITED(status))
 	{
 		if (WEXITSTATUS(status) == 130)

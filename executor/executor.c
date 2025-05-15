@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:42:43 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/14 20:27:47 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/15 11:29:09 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static	void	handle_builtin_or_return(t_shell *shell, t_executor *cur)
 		return ;
 	}
 	if (is_builtin(cur->execs[0]))
-	{
+	{	
 		if (handle_single_builtin(shell) == EXIT_FAILURE)
 		{
 			exit_status(EXIT_SET, 1);

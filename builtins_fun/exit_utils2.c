@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_executor_list.c                               :+:      :+:    :+:   */
+/*   exit_utils2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/17 16:18:37 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/15 13:32:44 by asebban          ###   ########.fr       */
+/*   Created: 2025/05/15 11:23:41 by asebban           #+#    #+#             */
+/*   Updated: 2025/05/15 11:27:55 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-extern int	g_signals;
-
-t_executor	*fill_executor_list(t_shell *shell, t_executor *list)
+int	handle_too_many(int arg_count, int in_pipe)
 {
-	t_executor		*current;
-	t_lexer_list	*lexer;
-
-	current = list;
-	lexer = shell->lex_head;
-	while (current)
+	if (arg_count > 2)
 	{
-		list = process_lexemes(list, current, &lexer, shell);
-		if (!list)
-		{
-			if (exit_status(0, 0) == 0)
-				exit_status(1, 1);
-			return (NULL);
-		}
-		exit_status(1, 0);
-		current = current->next;
+		exit_status(1, 127);
+		if (!in_pipe)
+			ft_putstr_fd("exit\nminishell: exit\
+: too many arguments\n", STDERR_FILENO);
+		else
+			ft_putstr_fd("minishell: exit: too many arguments\n", STDERR_FILENO);
+		return (EXIT_FAILURE);
 	}
-	return (list);
+	return (-1);
 }

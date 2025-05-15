@@ -6,29 +6,30 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:38:38 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/13 15:08:08 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/15 14:05:55 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static	int	handle_redirections_pipeline(int *pipefd,
-										t_executor *cur)
+static int handle_redirections_pipeline(int *pipefd, t_executor *cur)
 {
-	if (cur->fd_in != STDIN_FILENO)
+	if (cur->fd_in != STDIN_FILENO && cur->fd_in >= 0)
 	{
 		if (dup2(cur->fd_in, STDIN_FILENO) == -1)
 			return (FAIL_SYSCALL);
 		close(cur->fd_in);
 	}
-	if (cur->fd_out != STDOUT_FILENO)
+	if (cur->fd_out != STDOUT_FILENO && cur->fd_out >= 0)
 	{
 		if (dup2(cur->fd_out, STDOUT_FILENO) == -1)
 			return (FAIL_SYSCALL);
 		close(cur->fd_out);
 	}
-	close(pipefd[0]);
-	close(pipefd[1]);
+	if (pipefd[0] >= 0)
+		close(pipefd[0]);
+	if (pipefd[1] >= 0)
+		close(pipefd[1]);
 	return (OKAY);
 }
 

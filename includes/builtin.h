@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 17:45:14 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/12 22:27:22 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/15 11:29:56 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,11 @@ bool			is_valid_identifier(char *str);
 int				export_no_args(t_shell *shell);
 void			print_sorted_env(t_environ_list *env);
 int				check_syntax(char *input);
+void			clean_exit(t_shell *shell, int exit_code);
+int				count_args(char **args);
+void			print_exit_if_needed(int in_pipe);
+void			handle_no_args(t_shell *shell, int exit_code, \
+int arg_count, int in_pipe);
+int				handle_non_numeric(char *arg, t_shell *shell, int in_pipe);
+int				handle_too_many(int arg_count, int in_pipe);
 #endif

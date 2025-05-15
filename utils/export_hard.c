@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 13:26:18 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/12 14:18:04 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/15 14:01:19 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ char	*join_strings(char **strs, char delim)
 	size_t	count;
 	char	*buf;
 	size_t	i;
+	size_t	len;
 
+	len = 0;
 	size = compute_size(strs, &count);
 	if (size == 0)
 		return (NULL);
@@ -68,8 +70,9 @@ char	*join_strings(char **strs, char delim)
 		ft_strcat(buf, strs[i]);
 		if (i + 1 < count)
 		{
-			buf[ft_strlen(buf)] = delim;
-			buf[ft_strlen(buf)] = '\0';
+			len = ft_strlen(buf);
+			buf[len] = delim;
+			buf[len + 1] = '\0';
 		}
 		i++;
 	}

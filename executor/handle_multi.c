@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:31:19 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/13 16:55:38 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/15 14:18:16 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ void	handle_multi(t_info *info, t_executor *current)
 {
 	int	fildes[2];
 
+	fildes[0] = -1;
+	fildes[1] = -1;
 	if (current->next)
 		handle_pipe(fildes, current);
 	handle_fork(info, current, fildes);

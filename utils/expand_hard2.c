@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 17:21:28 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/14 17:13:32 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/15 13:51:06 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,25 @@ static	char	*join_with_pipes(char **parts)
 	return (res);
 }
 
+static	int	has_heredoc(const char *str)
+{
+	int	j;
+
+	j = 0;
+	while (str[j])
+	{
+		if (str[j] == '<' && str[j + 1] == '<')
+			return (1);
+		j++;
+	}
+	return (0);
+}
+
 char	*process_line_expand_first_var(char *line, t_shell *shell)
 {
 	char	**parts;
 	size_t	i;
 	char	*result;
-	int		j;
 	int		skip_herdoc;
 
 	parts = ft_split1(line, '|');
@@ -58,16 +71,7 @@ char	*process_line_expand_first_var(char *line, t_shell *shell)
 	while (parts[i])
 	{
 		skip_herdoc = 0;
-		j = 0;
-		while (parts[i][j])
-		{
-			if (parts[i][j] == '<' && parts[i][j + 1] == '<')
-			{
-				skip_herdoc = 1;
-				break ;
-			}
-			j++;
-		}
+		skip_herdoc = has_heredoc(parts[i]);
 		if (!skip_herdoc)
 			parts[i] = process_single_chunk(parts[i], shell);
 		i++;

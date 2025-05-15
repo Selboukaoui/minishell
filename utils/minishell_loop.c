@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell_loop.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/15 13:47:56 by asebban           #+#    #+#             */
+/*   Updated: 2025/05/15 13:47:58 by asebban          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
@@ -36,32 +47,26 @@ static	char	*preprocess_input(char *raw, t_shell *shell)
 	if (!check_syntax(raw))
 	{
 		free(raw);
-		// ft_malloc(0, 0);
 		return (NULL);
 	}
 	processed = clean_rl_copy(raw);
 	free(raw);
 	processed = process_line_expand_first_var(processed, shell);
-	printf("---> str1 : %s\n", processed);
 	if (!processed)
 		return (NULL);
 	processed = handle_dollar_quotes(processed);
-	printf("---> str2 : %s\n", processed);
 	if (!processed)
 		return (NULL);
 	processed = replace_var_equals_var(processed, shell);
-	printf("---> str3 : %s\n", processed);
 	if (!processed)
 		return (NULL);
 	processed = export_hard(processed, shell);
-	printf("---> str4 : %s\n", processed);
 	return (processed);
 }
 
 static	void	parse_and_execute(t_shell *shell)
 {
 	shell->rl_copy = replace_vars1(shell->rl_input, shell);
-	printf("---> str5 : %s\n", shell->rl_copy);
 	replace_soh_with_dollar(shell->rl_copy);
 	replace_soh_with_dollar_in_env(shell->env);
 	if (!shell->rl_copy)

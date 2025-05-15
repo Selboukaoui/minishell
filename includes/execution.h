@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 17:32:10 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/14 13:25:53 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/15 13:52:40 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ char			*replace_vars1(const char *input, t_shell *shell);
 char			*export_hard(char *str, t_shell *shell);
 void			write_value(t_varctx *ctx, const char *val);
 char			**ft_split1(char const *s, char c);
-char			*process_line_expand_first_var(char *line, t_shell *shell);
-char			*ft_replace_var3(const char *seg, t_shell *shell, int flag);
+char			*process_line_expand_first_var(char *line, \
+t_shell *shell);
+char			*ft_replace_var3(const char *seg, \
+t_shell *shell, int flag);
 
 #endif
