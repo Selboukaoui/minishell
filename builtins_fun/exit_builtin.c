@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 14:11:51 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/15 11:28:44 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/15 22:57:52 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ static	int	skip_ws_and_sign(const char *s, int *sign)
 }
 
 static	int	parse_digits_with_limit(const char *s,
-		int start, long limit, long *out_acc)
+		int start, unsigned long limit, unsigned long *out_acc)
 {
-	long	acc;
+	unsigned long	acc;
 	int		i;
 	int		digit;
 
@@ -49,7 +49,7 @@ static	int	parse_digits_with_limit(const char *s,
 	while (ft_isdigit(s[i]))
 	{
 		digit = s[i] - '0';
-		if (acc > limit / 10 || (acc == limit / 10 && digit > (limit % 10)))
+		if (acc > limit / 10 || (acc == limit / 10 && (unsigned long)digit  > (limit % 10)))
 			return (-1);
 		acc = acc * 10 + digit;
 		i++;
@@ -61,15 +61,15 @@ static	int	parse_digits_with_limit(const char *s,
 static	bool	is_arg_number(const char *arg)
 {
 	int				sign;
-	long			acc;
-	long			limit;
+	unsigned long	acc;
+	unsigned long	limit;
 	int				idx;
 
 	idx = skip_ws_and_sign(arg, &sign);
-	if (sign < 0)
-		limit = LONG_MIN;
-	else
-		limit = LONG_MAX;
+    if (sign < 0)
+        limit = -(unsigned long)(LONG_MIN);
+    else
+        limit = (unsigned long)LONG_MAX;
 	idx = parse_digits_with_limit(arg, idx, limit, &acc);
 	if (idx < 0)
 		return (false);
