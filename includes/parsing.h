@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 17:31:21 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/15 16:19:41 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/15 17:48:57 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_lexer_list *lex, t_shell *sh);
 int				process_out_append(t_executor *current, t_lexer_list *lexer);
 bool			open_outputfile(t_executor *current, t_lexer_list *lexer);
 bool			is_delimiter(const char *line, const char *delimiter);
-void			handle_eof(char *delimiter);
+void			handle_eof();
 int				open_heredoc_pipe(int pipefd[2]);
 size_t			buf_append(char *out, size_t o, const char *str);
 size_t			append_exit_status(char *out, size_t o);

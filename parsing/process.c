@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:58:23 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/13 13:51:11 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/15 17:46:09 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,7 @@ int	process_in_heredoc(t_executor *cur, t_lexer_list *lex, t_shell *sh)
 		cur->fd_in = open(lex->next->str, O_RDONLY);
 		if (cur->fd_in == -1)
 		{
-			ft_putstr_fd("minishell: ", STDERR_FILENO);
-			perror(lex->next->str);
+			perror("minishell");
 			return (FAILED);
 		}
 	}

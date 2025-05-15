@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 10:02:46 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/14 10:50:23 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/15 17:50:49 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,13 +112,13 @@ char	*get_path(t_shell *shell, bool printerror)
 		if (!path)
 			return (NULL);
 		if (access(path, F_OK) == -1 && printerror)
-			return (get_path_error(shell->executor->execs[0]), NULL);
+			return (get_path_error(), NULL);
 		return (path);
 	}
 	path = get_absolute_path(shell);
 	if (!path)
 		return (NULL);
 	if (access(path, F_OK) == -1 && printerror)
-		return (get_path_error(shell->executor->execs[0]), NULL);
+		return (get_path_error(), NULL);
 	return (path);
 }

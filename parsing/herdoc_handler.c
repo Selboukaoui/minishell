@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:34:49 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/15 13:32:31 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/15 17:49:06 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	heredoc_child_loop(int write_fd,
 		}
 		if (!line)
 		{
-			handle_eof(delimiter);
+			handle_eof();
 			ft_malloc(0, 0);
 			exit(0);
 		}

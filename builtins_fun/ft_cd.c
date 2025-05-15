@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:03:20 by selbouka          #+#    #+#             */
-/*   Updated: 2025/05/15 15:13:56 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/15 17:40:24 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,7 @@ cannot access parent directories: No such file or directory\n", 2), FAIL);
 int	handle_normal_cd(t_shell *shell, char *arg, char *old_pwd, char *new_pwd)
 {
 	if (chdir(arg) != 0)
-	{
-		ft_putstr_fd("minishell: cd: ", 2);
-		ft_putstr_fd(arg, 2);
-		return (ft_putstr_fd(": No such file or directory\n", 2), FAIL);
-	}
+		ft_putstr_fd("minishell: cd: No such file or directory\n ", 2);
 	if (!getcwd(new_pwd, PATH_MAX))
 		return (ft_putstr_fd("cd: error retrieving new directory\n", 2), FAIL);
 	if (!env_var_update(shell->env, "PWD", new_pwd))

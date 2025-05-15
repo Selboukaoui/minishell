@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   child_handler_multi.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:38:38 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/15 16:19:59 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/15 17:47:18 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,29 +33,23 @@ static	int	handle_redirections_pipeline(int *pipefd, t_executor *cur)
 	return (OKAY);
 }
 
-static void	err(int flag, t_executor *current, char *path)
+static void	err(int flag)
 {
 	if (flag == 1)
 	{
-		ft_putstr_fd("minishell: ", STDERR_FILENO);
-		ft_putstr_fd(current->execs[0], STDERR_FILENO);
-		ft_putstr_fd(": command not found\n", STDERR_FILENO);
+		ft_putstr_fd("minishell: command not found\n", STDERR_FILENO);
 		ft_malloc(0, 0);
 		exit(127);
 	}
 	else if (flag == 2)
 	{
-		ft_putstr_fd("minishell: ", STDERR_FILENO);
-		ft_putstr_fd(path, STDERR_FILENO);
-		ft_putstr_fd(": Is a directory\n", STDERR_FILENO);
+		ft_putstr_fd("minishell: Is a directory\n", STDERR_FILENO);
 		ft_malloc(0, 0);
 		exit(126);
 	}
 	else if (flag == 3)
 	{
-		ft_putstr_fd("minishell: ", STDERR_FILENO);
-		ft_putstr_fd(current->execs[0], STDERR_FILENO);
-		ft_putstr_fd(": Permission denied\n", STDERR_FILENO);
+		ft_putstr_fd("minishell: Permission denied\n", STDERR_FILENO);
 		(ft_malloc(0, 0), exit(126));
 	}
 }
@@ -68,16 +62,16 @@ void	execute_other(t_executor *current, t_info *info)
 
 	path = execute_other_helper(current);
 	if (!path)
-		err(1, current, path);
+		err(1);
 	if (stat(path, &st) == 0 && S_ISDIR(st.st_mode))
-		err(2, current, path);
+		err(2);
 	env_array = transform_environ_array(info->shell);
 	if (!env_array)
 		(ft_malloc(0, 0), exit(126));
 	execve(path, current->execs, env_array);
 	try_exec_with_fallback(path, current->execs, env_array, info->shell);
 	if (errno == EACCES)
-		err(3, current, path);
+		err(3);
 	else
 	{
 		perror("minishell");
@@ -117,7 +111,7 @@ int	child_handler_multi(int *fildes, t_executor *current, t_info *info)
 		(ft_malloc(0, 0), exit(FAIL_SYSCALL_CHILD));
 	if (is_cmdline_empty(current->execs[0]))
 	{
-		ft_putstr_fd("minishell: : command not found\n", STDERR_FILENO);
+		ft_putstr_fd("minishell: command not found\n", STDERR_FILENO);
 		(ft_malloc(0, 0), exit(127));
 	}
 	if (is_builtin(current->execs[0]))

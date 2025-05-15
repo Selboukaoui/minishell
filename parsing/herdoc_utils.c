@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 14:39:43 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/11 14:43:58 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/15 17:48:06 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,10 @@ int	open_heredoc_pipe(int pipefd[2])
 	return (0);
 }
 
-void	handle_eof(char *delimiter)
+void	handle_eof()
 {
 	ft_putstr_fd("minishell: warning: here-document \
-delimited by end-of-file (wanted `", STDERR_FILENO);
-	ft_putstr_fd(delimiter, STDERR_FILENO);
-	ft_putstr_fd("')\n", STDERR_FILENO);
+delimited by end-of-file", STDERR_FILENO);
 }
 
 bool	is_delimiter(const char *line, const char *delimiter)

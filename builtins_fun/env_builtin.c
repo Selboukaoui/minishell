@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 12:14:24 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/11 17:39:12 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/15 17:37:46 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,7 @@ int	env(t_shell *shell)
 	while (current)
 	{
 		if (current->value)
-		{
-			ft_putstr_fd(current->key, STDOUT_FILENO);
-			ft_putchar_fd('=', STDOUT_FILENO);
-			ft_putstr_fd(current->value, STDOUT_FILENO);
-			ft_putchar_fd('\n', STDOUT_FILENO);
-		}
+			printf("%s=%s\n", current->key, current->value);
 		current = current->next;
 	}
 	return (EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 12:13:22 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/14 20:26:51 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/15 17:50:10 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static	char	*resolve_cmd_path_or_exit(t_shell *shell, char *cmd)
 			return (cmd);
 	}
 	if (!path)
-		err_for_norm(cmd);
+		err_for_norm();
 	return (path);
 }
 
@@ -64,9 +64,7 @@ static	void	exec_command_and_cleanup(char *path,
 		handle_no_file_error(path);
 	if (stat(path, &st) == 0 && S_ISDIR(st.st_mode))
 	{
-		ft_putstr_fd("minishell: ", STDERR_FILENO);
-		ft_putstr_fd(path, STDERR_FILENO);
-		ft_putstr_fd(": Is a directory\n", STDERR_FILENO);
+		ft_putstr_fd("minishell: Is a directory\n", STDERR_FILENO);
 		(ft_malloc(0, 0), exit(126));
 	}
 	try_exec_with_fallback(path, args, env_array, shell);
