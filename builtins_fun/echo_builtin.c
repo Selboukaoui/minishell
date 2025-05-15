@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 13:50:49 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/10 18:59:12 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/15 15:05:53 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,9 @@ int	echo(char **args)
 	int			newline;
 	char		*buff;
 	size_t		len;
-	static int	j;
+	int			j;
 
+	j = 0;
 	len = total_len(args);
 	buff = ft_malloc (len, 1);
 	if (!buff)
@@ -77,9 +78,9 @@ int	echo(char **args)
 		i++;
 	}
 	buff[j] = '\0';
-	printf ("%s", buff);
 	if (newline)
-		printf ("\n");
-	j = 0;
+		printf ("%s\n", buff);
+	else
+		write(1, buff, ft_strlen(buff));
 	return (ft_bzero(buff, ft_strlen (buff)), EXIT_SUCCESS);
 }

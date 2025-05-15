@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 13:26:31 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/08 14:42:49 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/15 15:55:29 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,5 @@ int	all_value(char *seg, t_shell *shell)
 		else
 			i++;
 	}
-	return (total);
+	return (total + 250);
 }

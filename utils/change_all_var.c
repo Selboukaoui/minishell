@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 18:01:31 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/12 20:52:15 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/15 14:25:37 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char	*change_all_var(const char *str, t_shell *sh)
 
 	if (!str || !sh)
 		return (NULL);
-	maxlen = calculate_max_len(str, sh) + 1;
+	maxlen = calculate_max_len(str, sh) + 64;
 	ctx.out = ft_malloc(maxlen, 1);
 	if (!ctx.out)
 		return (NULL);
