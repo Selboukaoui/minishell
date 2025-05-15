@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:00:30 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/15 17:49:46 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/15 17:53:56 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ int	herdoc_status(int action, int value)
 	return (status);
 }
 
-void	err_for_norm()
+void	err_for_norm(void)
 {
 	ft_putstr_fd("minishell: command not found\n", STDERR_FILENO);
 	(ft_malloc(0, 0), exit(127));
 }
 
-void	get_path_error()
+void	get_path_error(void)
 {
 	ft_putstr_fd("minishell: command not found\n", STDERR_FILENO);
 }

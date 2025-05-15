@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 12:13:22 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/15 17:50:10 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/15 17:54:25 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static	void	exec_command_and_cleanup(char *path,
 		(ft_malloc(0, 0), exit(126));
 	execve(path, args, env_array);
 	if (errno == ENOENT)
-		handle_no_file_error(path);
+		handle_no_file_error();
 	if (stat(path, &st) == 0 && S_ISDIR(st.st_mode))
 	{
 		ft_putstr_fd("minishell: Is a directory\n", STDERR_FILENO);
