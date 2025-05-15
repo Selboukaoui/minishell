@@ -6,7 +6,7 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:03:20 by selbouka          #+#    #+#             */
-/*   Updated: 2025/05/10 18:47:28 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/15 15:13:56 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	cd_no_args(t_shell *shell)
 
 int	handle_getcwd_failure(t_shell *shell, char *arg, char *new_pwd, char **x)
 {
-	if (!ft_strcmp("..", arg))
+	if (!ft_strcmp("..", arg) || !ft_strcmp("../", arg))
 	{
 		if (!env_var_update(shell->env, "OLDPWD", ft_strjoin(new_pwd, *x)))
 			return (FAIL);
@@ -66,7 +66,7 @@ int	handle_getcwd_failure(t_shell *shell, char *arg, char *new_pwd, char **x)
 		if (!env_var_update(shell->env, "PWD", ft_strjoin(new_pwd, *x)))
 			return (FAIL);
 	}
-	else if (!ft_strcmp(".", arg))
+	else if (!ft_strcmp(".", arg) || !ft_strcmp("./", arg))
 	{
 		if (!env_var_update(shell->env, "OLDPWD", ft_strjoin(new_pwd, *x)))
 			return (FAIL);
