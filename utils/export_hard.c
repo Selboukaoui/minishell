@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_hard.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 13:26:18 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/15 14:01:19 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/15 16:18:41 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,13 @@ char	*join_strings(char **strs, char delim)
 	size_t	i;
 	size_t	len;
 
-	len = 0;
-	size = compute_size(strs, &count);
+	1 && (len = 0, size = compute_size(strs, &count));
 	if (size == 0)
 		return (NULL);
 	buf = ft_malloc(size, 1);
 	if (!buf)
 		return (NULL);
-	buf[0] = '\0';
-	i = 0;
+	1 && (buf[0] = '\0', i = 0);
 	while (i < count)
 	{
 		ft_strcat(buf, strs[i]);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   child_handler_multi.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:38:38 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/15 14:05:55 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/15 16:19:59 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static int handle_redirections_pipeline(int *pipefd, t_executor *cur)
+static	int	handle_redirections_pipeline(int *pipefd, t_executor *cur)
 {
 	if (cur->fd_in != STDIN_FILENO && cur->fd_in >= 0)
 	{

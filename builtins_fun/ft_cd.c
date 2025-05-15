@@ -58,7 +58,7 @@ int	cd_no_args(t_shell *shell)
 
 int	handle_getcwd_failure(t_shell *shell, char *arg, char *new_pwd, char **x)
 {
-	if (!ft_strcmp("..", arg) || !ft_strcmp("../", arg))
+	if (!ft_strcmp("..", arg) || ! ft_strcmp("../", arg))
 	{
 		if (!env_var_update(shell->env, "OLDPWD", ft_strjoin(new_pwd, *x)))
 			return (FAIL);

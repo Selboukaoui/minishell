@@ -6,7 +6,7 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:49:40 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/15 15:48:12 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/15 16:39:16 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,8 @@ int	check_pipe(char *input)
 		return (0);
 	while (*input)
 	{
+		skip_quates(&input);
+		printf ("input = %s\n", input);
 		if (*input == '|')
 		{
 			while ((*input == '|' || *input == ' ' || *input == '\t') && *input)

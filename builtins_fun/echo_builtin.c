@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 13:50:49 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/15 15:05:53 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/15 16:20:23 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,7 @@ int	echo(char **args)
 	size_t		len;
 	int			j;
 
-	j = 0;
-	len = total_len(args);
+	1 && (j = 0, len = total_len(args));
 	buff = ft_malloc (len, 1);
 	if (!buff)
 		return (0);

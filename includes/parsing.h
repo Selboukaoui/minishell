@@ -6,7 +6,7 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 17:31:21 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/15 15:48:53 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/15 16:19:41 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,6 @@ void			app_result(char **pres);
 const char		*skip_leading_spaces(const char *s);
 void			minishell_loop(t_shell *shell);
 bool			check_tty(void);
-int skip_quates(char **input);
+int				skip_quates(char **input);
+
 #endif
