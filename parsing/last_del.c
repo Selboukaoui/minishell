@@ -6,11 +6,20 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:14:41 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/15 16:43:00 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/15 18:04:45 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+int	check_fornorm(char **input)
+{
+	while (**input == ' ' || **input == '\t')
+		(*input)++;
+	if (**input == '|')
+		return (0);
+	return (1);
+}
 
 int	skip_quates(char **input)
 {
@@ -28,16 +37,14 @@ int	skip_quates(char **input)
 			{
 				(*input)++;
 				if (**input == quote)
-				{
-					(*input)++;
-					break ;
-				}
+					return (1);
 				if (**input == '\0')
 					return (0);
 			}
 		}
 		(*input)++;
 	}
+	printf ("skip2 = %s\n", *input);
 	return (1);
 }
 
