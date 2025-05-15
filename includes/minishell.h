@@ -65,7 +65,7 @@ void			update_node(t_environ_node *node, t_export_data *data);
 void			add_new_node(t_shell *shell, t_export_data *data);
 void			exporting(t_shell *shell, char *str);
 int				export_args(t_shell *shell, char **args);
-void			handle_no_file_error();
+void			handle_no_file_error(void);
 void			replace_soh_with_dollar_in_env(t_environ_list *env_list);
 void			replace_soh_with_dollar(char *str);
 char			*ft_replace_var3(const char *seg, t_shell *shell, int flag);

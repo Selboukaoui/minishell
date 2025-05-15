@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 10:41:04 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/15 17:39:04 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/15 17:59:18 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,8 @@ int	export_args(t_shell *shell, char **args)
 	{
 		if (!is_valid_identifier(args[i]))
 		{
-			ft_putstr_fd("minishell: export: not a valid identifier\n", STDERR_FILENO);
+			ft_putstr_fd("minishell: export: not a \
+valid identifier\n", STDERR_FILENO);
 			ret = EXIT_FAILURE;
 			exit_status(1, 1);
 			continue ;

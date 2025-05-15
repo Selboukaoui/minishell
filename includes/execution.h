@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 17:32:10 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/15 17:51:03 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/15 17:58:04 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int				is_cmdline_empty(const char *cmdline);
 void			try_exec_with_fallback(char *path,
 					char **args, char **envp, t_shell *shell);
 char			*execute_other_helper(t_executor *current);
-void			err_for_norm();
-void			get_path_error();
+void			err_for_norm(void);
+void			get_path_error(void);
 char			*replace_vars1(const char *input, t_shell *shell);
 char			*export_hard(char *str, t_shell *shell);
 void			write_value(t_varctx *ctx, const char *val);
