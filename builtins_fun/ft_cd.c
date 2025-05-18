@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:03:20 by selbouka          #+#    #+#             */
-/*   Updated: 2025/05/15 17:40:24 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/18 23:53:37 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ int	cd_no_args(t_shell *shell)
 	home = ft_getenv(shell->env, "HOME");
 	if (!home)
 		return (ft_putstr_fd("cd: HOME not set\n", 2), FAIL);
-	if (!getcwd(old_pwd, sizeof(old_pwd)))
-		return (ft_putstr_fd("getcwd\n", 2), FAIL);
 	if (chdir(home->value) != 0)
-		return (ft_putstr_fd("Chdir\n", 2), FAIL);
+		return (ft_putstr_fd("minishell: chdir failed\n", 2), FAIL);
+	if (!getcwd(old_pwd, sizeof(old_pwd)))
+		return (ft_putstr_fd("minishell: getcwd failed\n", 2), FAIL);
 	if (!env_var_update(shell->env, "PWD", home->value))
 		return (FAIL);
 	if (!env_var_update(shell->env, "OLDPWD", old_pwd))
@@ -74,15 +74,15 @@ int	handle_getcwd_failure(t_shell *shell, char *arg, char *new_pwd, char **x)
 		if (!env_var_update(shell->env, "PWD", ft_strjoin(new_pwd, *x)))
 			return (FAIL);
 	}
+	if (!arg)
+		return (cd_no_args(shell));
 	chdir(arg);
 	if (getcwd(new_pwd, PATH_MAX))
 	{
 		env_var_update(shell->env, "PWD", new_pwd);
-		*x = NULL;
-		return (OK);
+		return (*x = NULL, OK);
 	}
-	return (ft_putstr_fd("cd: error retrieving current directory: getcwd: \
-cannot access parent directories: No such file or directory\n", 2), FAIL);
+	return (ft_putstr_fd(ERR, 2), FAIL);
 }
 
 int	handle_normal_cd(t_shell *shell, char *arg, char *old_pwd, char *new_pwd)
@@ -116,3 +116,15 @@ int	cd(t_shell *shell, char **arg)
 	}
 	return (handle_normal_cd(shell, arg[1], old_pwd, new_pwd));
 }
+
+
+// minishell-1.0$~ export var=l p++=f
+// minishell: export: not a valid identifier
+// minishell-1.0$~ echo $?
+// 0
+// minishe
+
+// minishell-1.0$~ export p++=f
+// minishell: export: not a valid identifier
+// minishell-1.0$~ echo $?
+// 0

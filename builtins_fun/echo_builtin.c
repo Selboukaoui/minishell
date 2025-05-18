@@ -6,7 +6,7 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 13:50:49 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/15 16:20:23 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/16 14:34:36 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	echo(char **args)
 	int			j;
 
 	1 && (j = 0, len = total_len(args));
-	buff = ft_malloc (len, 1);
+	buff = ft_malloc (len + 1, 1);
 	if (!buff)
 		return (0);
 	i = 1;

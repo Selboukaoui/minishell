@@ -6,17 +6,17 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 20:00:22 by selbouka          #+#    #+#             */
-/*   Updated: 2025/05/14 13:37:16 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/16 14:39:36 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	err(int c)
+void	*err(int c)
 {
 	(void)c;
-	printf ("Allocation failed\n");
-	return (0);
+	perror ("minishell\n");
+	return (NULL);
 }
 
 void	close_all_fds(void)
@@ -63,10 +63,10 @@ void	*ft_malloc(size_t size, int mode)
 	{
 		data = malloc(size);
 		if (!data)
-			err(25);
+			return (err(25));
 		node = malloc(sizeof(t_collect));
 		if (!node)
-			(free(data), err(25));
+			return (free(data), err(25));
 		node->data = data;
 		node->next = head;
 		head = node;

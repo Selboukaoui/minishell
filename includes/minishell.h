@@ -39,6 +39,8 @@
 # define FAIL -1
 # define PARENT 1
 # define CHILD  3
+# define ERR "cd: error retrieving current directory: getcwd: \
+cannot access parent directories: No such file or directory\n"
 
 typedef struct s_shell
 {

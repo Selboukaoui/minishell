@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 17:32:46 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/15 13:10:03 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/16 13:40:39 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_token	which_type(char *s, int inside)
 	static int	count;
 
 	if (!s)
-		return (EMPTY);
+		return (0);
 	if (inside)
 		return (CMD);
 	if (ft_strcmp(s, "|") == 0)
@@ -73,7 +73,7 @@ t_token	which_type(char *s, int inside)
 			ft_putstr_fd("maximum here-document count exceeded\n", 2);
 			(ft_malloc(0, 0), exit(2));
 		}
-		count ++;
+		count++;
 		return (HEREDOC);
 	}
 	if (ft_strcmp(s, ">>") == 0)
