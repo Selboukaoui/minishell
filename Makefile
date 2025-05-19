@@ -11,7 +11,7 @@ SRCM = main.c \
 		builtins_fun/unset_builtin.c builtins_fun/exit_builtin.c builtins_fun/builtins_utils.c builtins_fun/handle_single_builtin2.c utils/handle_dollar_quotes.c utils/replace_var_equals_var.c utils/all_values.c \
 		executor/path_handler_multi.c  utils/replace_vars.c  utils/export_hard.c utils/change_all_var.c utils/calculate_len.c utils/ft_split_utils2.c utils/ft_split_utils1.c utils/replace_var_utils.c builtins_fun/export_utils2.c builtins_fun/export_utils1.c \
 		utils/expand_hard2.c parsing/herdoc_handler.c parsing/process_lexemes.c parsing/process.c parsing/last_del.c parsing/herdoc_var.c parsing/herdoc_utils.c parsing/herdoc_var_utils.c parsing/herdoc_val_utils.c parsing/token_utils.c utils/replace_vars_1.c  utils/replace_vars_2.c utils/ft_realloc.c utils/expand_utils.c utils/expand_utils2.c utils/minishell_loop.c utils/replace_soh.c utils/replace_var3.c \
-		builtins_fun/exit_utils2.c builtins_fun/exit_utils.c parsing/allocate_lexer_nodes.c utils/fill_replaced_segment.c
+		builtins_fun/exit_utils2.c builtins_fun/exit_utils.c parsing/allocate_lexer_nodes.c utils/fill_replaced_segment.c utils/count.c
 
 SRCLIB = libft/ft_atoi.c    libft/ft_isalnum.c  libft/ft_isdigit.c   libft/ft_memchr.c  libft/ft_memmove.c     libft/ft_putendl_fd.c  libft/ft_split1.c  libft/ft_strchr.c    libft/ft_strjoin2.c  libft/ft_strlcpy.c  libft/ft_strncat.c  libft/ft_strrchr.c  libft/ft_tolower.c \
 		 libft/ft_bzero.c   libft/ft_isalpha.c  libft/ft_isprint.c  libft/ft_memcmp.c  libft/ft_memset.c      libft/ft_putnbr_fd.c   libft/ft_split.c   libft/ft_strdup.c    libft/ft_strjoin.c   libft/ft_strlen.c   libft/ft_strncmp.c  libft/ft_strtrim.c  libft/ft_toupper.c  libft/new_split.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 12:35:04 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/16 13:51:12 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/19 11:48:41 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	assign_lexer_data(t_lexer_list *cur,
 	{
 		cur->str = ft_strdup(input_array[i]);
 		if (!cur->str)
-			return (0);
+			return (count_herdoc(2),0);
 		idx = find_token_pos(rl_copy, cur->str, last_pos);
 		if (idx < 0)
 			idx = last_pos;
@@ -44,10 +44,17 @@ int	assign_lexer_data(t_lexer_list *cur,
 				|| (rl_copy[idx - 1] == '\"' && rl_copy[idx + len] == '\"')))
 			inside = 1;
 		cur->type = which_type(cur->str, inside);
+		if (cur->type == HEREDOC)
+			count_herdoc(1);
+		if (count_herdoc(0) == 16)
+		{
+			ft_putstr_fd("maximum here-document count exceeded\n", 2);
+			(ft_malloc(0, 0), exit(2));
+		}
 		inside = 0;
 		1 && (i++, cur = cur->next);
 	}
-	return (1);
+	return (count_herdoc(2),1);
 }
 
 t_lexer_list	*fill_lexer_list(char **input_array, const char *rl_copy)

@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 12:13:22 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/15 17:54:25 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/19 10:28:37 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ static	void	exec_command_and_cleanup(char *path,
 	perror("minishell");
 	dup2(saved_fds[0], STDIN_FILENO);
 	dup2(saved_fds[1], STDOUT_FILENO);
+	close(saved_fds[0]);
+	close(saved_fds[1]);
 	ft_malloc(0, 0);
 	exit(126);
 }

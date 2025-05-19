@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 11:14:49 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/12 11:27:47 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/19 09:58:06 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,11 @@ int	is_cmdline_empty(const char *cmdline)
 			continue ;
 		}
 		if (cmdline[i] == '\'' && cmdline[i + 1] == '\'')
+		{
+			i += 2;
+			continue ;
+		}
+		if (cmdline[i] == '.' && cmdline[i + 1] == '.' )
 		{
 			i += 2;
 			continue ;

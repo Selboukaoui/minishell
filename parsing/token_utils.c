@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 17:32:46 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/16 13:40:39 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/19 11:49:41 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	find_token_pos(const char *rl, const char *s, int last_pos)
 
 t_token	which_type(char *s, int inside)
 {
-	static int	count;
 
 	if (!s)
 		return (0);
@@ -68,12 +67,6 @@ t_token	which_type(char *s, int inside)
 		return (rederect_out);
 	if (ft_strcmp(s, "<<") == 0)
 	{
-		if (count == 16)
-		{
-			ft_putstr_fd("maximum here-document count exceeded\n", 2);
-			(ft_malloc(0, 0), exit(2));
-		}
-		count++;
 		return (HEREDOC);
 	}
 	if (ft_strcmp(s, ">>") == 0)

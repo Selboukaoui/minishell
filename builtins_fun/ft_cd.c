@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:03:20 by selbouka          #+#    #+#             */
-/*   Updated: 2025/05/18 23:53:37 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/19 09:52:10 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,15 +116,3 @@ int	cd(t_shell *shell, char **arg)
 	}
 	return (handle_normal_cd(shell, arg[1], old_pwd, new_pwd));
 }
-
-
-// minishell-1.0$~ export var=l p++=f
-// minishell: export: not a valid identifier
-// minishell-1.0$~ echo $?
-// 0
-// minishe
-
-// minishell-1.0$~ export p++=f
-// minishell: export: not a valid identifier
-// minishell-1.0$~ echo $?
-// 0

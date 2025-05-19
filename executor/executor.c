@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:42:43 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/15 11:29:09 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/19 11:18:03 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,20 @@ static	void	handle_builtin_or_return(t_shell *shell, t_executor *cur)
 {
 	if (!cur || !cur->execs || !cur->execs[0])
 	{
+		if (cur)
+        {
+            if (cur->fd_in  != STDIN_FILENO)
+                close(cur->fd_in);
+            if (cur->fd_out != STDOUT_FILENO)
+                close(cur->fd_out);
+        }
 		exit_status(EXIT_SET, 0);
 		return ;
 	}
 	if (is_builtin(cur->execs[0]))
 	{	
 		if (handle_single_builtin(shell) == EXIT_FAILURE)
-		{
 			exit_status(EXIT_SET, 1);
-		}
-		else
-			exit_status(EXIT_SET, 0);
 	}
 }
 
@@ -38,12 +41,20 @@ static	void	handle_fork_execution(t_shell *shell)
 	pid = fork();
 	if (pid == -1)
 	{
+		if (shell->executor->fd_in != STDIN_FILENO)
+    		close(shell->executor->fd_in);
+		if (shell->executor->fd_out != STDOUT_FILENO)
+    		close(shell->executor->fd_out);
 		(perror("minishell"), exit_status(EXIT_SET, 1));
 		return ;
 	}
 	if (pid == 0)
 		(signal_setup(3), handle_single_child(shell));
 	waitpid(pid, &status, 0);
+	if (shell->executor->fd_in != STDIN_FILENO)
+    	close(shell->executor->fd_in);
+	if (shell->executor->fd_out != STDOUT_FILENO)
+    	close(shell->executor->fd_out);
 	if (WIFEXITED(status))
 		exit_status(EXIT_SET, WEXITSTATUS(status));
 	else if (WIFSIGNALED(status))
@@ -63,7 +74,16 @@ static	void	handle_single(t_shell *shell)
 
 	cur = shell->executor;
 	if (!cur || !cur->execs || !cur->execs[0])
+	{
+		if (cur)
+        {
+            if (cur->fd_in  != STDIN_FILENO)
+                close(cur->fd_in);
+            if (cur->fd_out != STDOUT_FILENO)
+                close(cur->fd_out);
+        }
 		return ;
+	}
 	cur = shell->executor;
 	handle_builtin_or_return(shell, cur);
 	if (!is_builtin(cur->execs[0]))

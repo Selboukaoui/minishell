@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:31:19 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/15 14:18:16 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/19 12:06:35 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static	void	handle_pipe(int *fildes, t_executor *current)
 		exit_status(EXIT_SET, 1);
 		return ;
 	}
-	if (current->fd_out == STDOUT_FILENO)
+	if (current->fd_out == STDOUT_FILENO || isatty(current->fd_out))
 		current->fd_out = fildes[1];
 	else
 		close(fildes[1]);

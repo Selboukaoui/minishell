@@ -322,5 +322,6 @@ void			minishell_loop(t_shell *shell);
 bool			check_tty(void);
 int				skip_quates(char **input);
 int				check_fornorm(char **input);
+int				count_herdoc(int action);
 
 #endif

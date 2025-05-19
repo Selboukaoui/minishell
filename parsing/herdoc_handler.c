@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:34:49 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/15 17:49:06 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/19 10:48:12 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,20 @@ void	heredoc_child_loop(int write_fd,
 		line = readline("> ");
 		if (g_signals == 130)
 		{
+			close(write_fd);
 			(free(line), ft_malloc(0, 0));
 			exit(130);
 		}
 		if (!line)
 		{
+			close(write_fd);
 			handle_eof();
 			ft_malloc(0, 0);
 			exit(0);
 		}
 		if (is_delimiter(line, delimiter))
 		{
+			close(write_fd);
 			free(line);
 			ft_malloc(0, 0);
 			exit(0);
@@ -85,6 +88,7 @@ static	int	fork_heredoc_child(int pipefd[2],
 		quoted = is_last_delim_quoted(shell->rl_copy);
 		close(pipefd[0]);
 		heredoc_child_loop(pipefd[1], delimiter, shell, quoted);
+		close(pipefd[1]);
 	}
 	return (pid);
 }
