@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:47:56 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/20 13:01:37 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/20 13:22:21 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ void	minishell_loop(t_shell *shell)
 		if (!shell->rl_input)
 			continue ;
 		parse_and_execute(shell);
+		close_all_fds();
 	}
 }
