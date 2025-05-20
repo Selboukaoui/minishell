@@ -6,13 +6,14 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 12:56:06 by selbouka          #+#    #+#             */
-/*   Updated: 2025/05/20 11:18:18 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:18:36 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void    ft_cat(char *str)
+
+void	ft_cat(char *str)
 {
     int     len;
     int     i;
@@ -26,7 +27,7 @@ void    ft_cat(char *str)
         len--;
     }
     ft_bzero(str + len, i);
-	printf ("%s\n", str);
+	// printf ("%s\n", str);
 }
 
 int ft_chdir(char *arg)

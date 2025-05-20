@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:58:23 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/20 15:19:40 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/20 15:25:45 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ bool	open_outputfile(t_executor *current, t_lexer_list *lexer)
 	int	new_fd;
 
 	/* ensure lexer and string are valid and type is OUT or APPEND */
-	if (!lexer || !lexer->str || (lexer->type != rederect_out && lexer->type != APPEND))
+	if (!lexer || !lexer->str || lexer->type != 1)
 	{
 		ft_putstr_fd("minishell: ambiguous redirect\n", STDERR_FILENO);
 		exit_status(1, 1);
