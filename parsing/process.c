@@ -6,7 +6,7 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:58:23 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/20 17:56:34 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/20 18:03:01 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,27 +22,23 @@ bool	open_outputfile(t_executor *current, t_lexer_list *lexer)
 		exit_status(1, 1);
 		return (false);
 	}
-
 	if (current->append)
 		new_fd = open(lexer->str, O_WRONLY | O_CREAT | O_APPEND, 0644);
 	else
 		new_fd = open(lexer->str, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-
 	if (new_fd == -1)
 	{
 		perror(lexer->str);
 		return (false);
 	}
-
 	if (current->fd_out != STDOUT_FILENO)
 		close(current->fd_out);
-
 	current->fd_out = new_fd;
 	return (true);
 }
 
 int	process_out_append(t_executor *current, t_lexer_list *lexer)
-{   
+{
 	current->append = (lexer->type == APPEND);
 	current->rederect_out = (lexer->type == rederect_out);
 	if (!open_outputfile(current, lexer->next))
@@ -50,44 +46,42 @@ int	process_out_append(t_executor *current, t_lexer_list *lexer)
 	return (OK);
 }
 
-int process_in_heredoc(t_executor *cur, t_lexer_list *lex, t_shell *sh)
+int	process_in_heredoc(t_executor *cur, t_lexer_list *lex, t_shell *sh)
 {
-    int new_fd;
+	int new_fd;
 
-    if (!lex->next || !lex->next->str)
-    {
-        ft_putstr_fd("minishell: ambiguous redirect\n", STDERR_FILENO);
-        exit_status(1, 1);
-        return (OK);
-    }
-
-    if (lex->type == HEREDOC)
-    {
-        new_fd = create_heredoc(lex->next->str, sh);
-        if (new_fd == -1 || new_fd == -2)
-        {
-            if (new_fd > 0)
-                close(new_fd);
-            if (cur->fd_in != STDIN_FILENO)
-                close(cur->fd_in);
-            exit_status(1, 130);
-            return (OK);
-        }
-    }
-    else
-    {
-        new_fd = open(lex->next->str, O_RDONLY);
-        if (new_fd == -1)
-        {
-            perror(lex->next->str);
-            return (OK);
-        }
-    }
-    if (cur->fd_in != STDIN_FILENO)
-        close(cur->fd_in);
-
-    cur->fd_in = new_fd;
-    return (OK);
+	if (!lex->next || !lex->next->str)
+	{
+		ft_putstr_fd("minishell: ambiguous redirect\n", STDERR_FILENO);
+		exit_status(1, 1);
+		return (OK);
+	}
+	if (lex->type == HEREDOC)
+	{
+		new_fd = create_heredoc(lex->next->str, sh);
+		if (new_fd == -1 || new_fd == -2)
+		{
+			if (new_fd > 0)
+				close(new_fd);
+			if (cur->fd_in != STDIN_FILENO)
+				close(cur->fd_in);
+			exit_status(1, 130);
+			return (OK);
+		}
+	}
+	else
+	{
+		new_fd = open(lex->next->str, O_RDONLY);
+		if (new_fd == -1)
+		{
+			perror(lex->next->str);
+			return (OK);
+		}
+	}
+	if (cur->fd_in != STDIN_FILENO)
+		close(cur->fd_in);
+	cur->fd_in = new_fd;
+	return (OK);
 }
 
 int	process_command(t_executor *current, t_lexer_list *lexer)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 17:32:46 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/19 11:49:41 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/20 18:00:43 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	find_token_pos(const char *rl, const char *s, int last_pos)
 
 t_token	which_type(char *s, int inside)
 {
-
 	if (!s)
 		return (0);
 	if (inside)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 12:35:04 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/19 11:48:41 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/20 18:01:21 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	assign_lexer_data(t_lexer_list *cur,
 	{
 		cur->str = ft_strdup(input_array[i]);
 		if (!cur->str)
-			return (count_herdoc(2),0);
+			return (count_herdoc(2), 0);
 		idx = find_token_pos(rl_copy, cur->str, last_pos);
 		if (idx < 0)
 			idx = last_pos;
@@ -54,7 +54,7 @@ int	assign_lexer_data(t_lexer_list *cur,
 		inside = 0;
 		1 && (i++, cur = cur->next);
 	}
-	return (count_herdoc(2),1);
+	return (count_herdoc(2), 1);
 }
 
 t_lexer_list	*fill_lexer_list(char **input_array, const char *rl_copy)

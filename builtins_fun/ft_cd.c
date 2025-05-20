@@ -6,7 +6,7 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:03:20 by selbouka          #+#    #+#             */
-/*   Updated: 2025/05/20 17:43:16 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/20 17:59:03 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	handle_normal_cd(t_shell *shell, char *arg, char *old_pwd, char *new_pwd)
 	getcwd(c, PATH_MAX);
 	if (chdir(arg) != 0)
 	{
-		if ((!ft_strcmp(arg, "..") || !ft_strcmp(arg, "/..")) )
+		if ((!ft_strcmp(arg, "..") || !ft_strcmp(arg, "/..")))
 		{
 			ft_cat(c);
 			(flag = 1);

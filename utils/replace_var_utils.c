@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   replace_var_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 21:47:45 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/20 12:38:48 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/20 18:01:44 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static	char	*ft_check_segments(char *seg, t_shell *shell)
 			break ;
 		i++;
 	}
-	if (has_equal && (seg[i] != '$' ||seg[i] == '\"' || seg[i] == '\''))
+	if (has_equal && (seg[i] != '$' || seg[i] == '\"' || seg[i] == '\''))
 		return (seg);
 	return (ft_replace_var3(seg, shell, 1));
 }

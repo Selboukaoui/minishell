@@ -6,24 +6,23 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 12:56:06 by selbouka          #+#    #+#             */
-/*   Updated: 2025/05/20 17:57:48 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/20 17:59:40 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-
 void	ft_cat(char *str)
 {
-    int     len;
-    int     i;
+	int	len;
+	int	i;
 
-    i = 0;
-    len = ft_strlen (str) - 1;
-    while (str[len] && str[len] != '/')
-    {
-        i++;
-        len--;
-    }
-    ft_bzero(str + len, i);
+	i = 0;
+	len = ft_strlen (str) - 1;
+	while (str[len] && str[len] != '/')
+	{
+		i++;
+		len--;
+	}
+	ft_bzero(str + len, i);
 }
