@@ -137,6 +137,8 @@ typedef struct s_replinfo
 	size_t	o;
 }	t_replinfo;
 
+int				ft_chdir(char *arg);
+void			ft_cat(char *str);
 char			*get_next_token(const char *s, int *index);
 char			*parse_token(const char *s, int *i);
 int				parse_literal(const char *s, int *i, char **res);
