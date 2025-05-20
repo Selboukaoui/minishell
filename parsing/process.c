@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:58:23 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/20 20:12:06 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/20 22:22:27 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ bool	open_outputfile(t_executor *current, t_lexer_list *lexer)
 	{
 		ft_putstr_fd("minishell: ambiguous redirect\n", STDERR_FILENO);
 		exit_status(1, 1);
-		return (false);
+		if (current->size == 1)
+			return (false);
+		return (true);
 	}
 	if (current->append)
 		new_fd = open(lexer->str, O_WRONLY | O_CREAT | O_APPEND, 0644);
@@ -28,9 +30,10 @@ bool	open_outputfile(t_executor *current, t_lexer_list *lexer)
 		new_fd = open(lexer->str, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (new_fd == -1)
 	{
-		perror(lexer->str);
-		cleanup_redirections(current);
-		return (false);
+		(perror(lexer->str), cleanup_redirections(current));
+		if (current->size == 1)
+			return (false);
+		return (true);
 	}
 	if (current->fd_out != STDOUT_FILENO)
 		close(current->fd_out);
@@ -43,7 +46,7 @@ int	process_out_append(t_executor *current, t_lexer_list *lexer)
 	current->append = (lexer->type == APPEND);
 	current->rederect_out = (lexer->type == rederect_out);
 	if (!open_outputfile(current, lexer->next))
-		return (OK);
+		return (FAILED);
 	return (OK);
 }
 
@@ -63,11 +66,8 @@ int	process_in_heredoc(t_executor *cur, t_lexer_list *lex, t_shell *sh)
 {
 	int	new_fd;
 
-	if (!lex->next || !lex->next->str)
-	{
-		ft_putstr_fd("minishell: ambiguous redirect\n", STDERR_FILENO);
-		return (exit_status(1, 1), OK);
-	}
+	if (!lex->next || !lex->next->str || lex->next->type != 1)
+		return (err_red(cur));
 	new_fd = open_input_fd(lex, sh);
 	if (lex->type == HEREDOC && (new_fd == -1 || new_fd == -2))
 	{
@@ -81,6 +81,8 @@ int	process_in_heredoc(t_executor *cur, t_lexer_list *lex, t_shell *sh)
 	if (lex->type != HEREDOC && new_fd == -1)
 	{
 		(perror(lex->next->str), cleanup_redirections(cur));
+		if (cur->size == 1)
+			return (FAILED);
 		return (OK);
 	}
 	if (cur->fd_in != STDIN_FILENO)

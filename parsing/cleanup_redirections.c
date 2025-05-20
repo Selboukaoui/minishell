@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:52:33 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/20 19:56:15 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/20 22:17:08 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,13 @@ void	cleanup_redirections(t_executor *cur)
 		close(cur->fd_out);
 		cur->fd_out = STDOUT_FILENO;
 	}
+}
+
+int	err_red(t_executor *cur)
+{
+	ft_putstr_fd("minishell: ambiguous redirect\n", STDERR_FILENO);
+	exit_status(1, 1);
+	if (cur->size == 1)
+		return (FAILED);
+	return (OK);
 }
