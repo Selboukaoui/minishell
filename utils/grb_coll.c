@@ -6,7 +6,7 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 20:00:22 by selbouka          #+#    #+#             */
-/*   Updated: 2025/05/16 14:39:36 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/20 12:42:48 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	free_all(t_collect **head)
 		current = next;
 	}
 	*head = NULL;
+	rl_clear_history();
 }
 
 void	*ft_malloc(size_t size, int mode)

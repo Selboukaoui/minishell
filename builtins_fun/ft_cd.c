@@ -6,7 +6,7 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:03:20 by selbouka          #+#    #+#             */
-/*   Updated: 2025/05/20 11:55:48 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/20 12:40:56 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	cd_no_args(t_shell *shell)
 
 int	handle_getcwd_failure(t_shell *shell, char *arg, char *new_pwd, char **x)
 {
-	printf("gtcwd failed\n");
+	// printf("gtcwd failed\n");
 	if (!ft_strcmp("..", arg) || ! ft_strcmp("../", arg))
 	{
 		if (!env_var_update(shell->env, "OLDPWD", ft_strjoin(new_pwd, *x)))
@@ -112,10 +112,10 @@ int	handle_getcwd_failure(t_shell *shell, char *arg, char *new_pwd, char **x)
 // return (ft_putstr_fd(ERR, 2), FAIL);
 int	handle_normal_cd(t_shell *shell, char *arg, char *old_pwd, char *new_pwd)
 {
-	printf("Normal cd\n");
+	// printf("Normal cd\n");
 	if (chdir(arg) != 0)
 	{
-		printf ("arg == %s\npwd == %s\n", arg, getcwd(NULL, 0));
+		// printf ("arg == %s\npwd == %s\n", arg, getcwd(NULL, 0));
 		return (perror("minishell"), FAIL);
 	}
 	// char	c[PATH_MAX];
