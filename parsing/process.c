@@ -6,11 +6,19 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:58:23 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/19 12:21:59 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/20 13:11:29 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+static void	cleanup_redirections(t_executor *cur)
+{
+	if (!cur)
+		return;
+	if (cur->fd_in  != STDIN_FILENO)  { close(cur->fd_in);  cur->fd_in  = STDIN_FILENO; }
+	if (cur->fd_out != STDOUT_FILENO) { close(cur->fd_out); cur->fd_out = STDOUT_FILENO; }
+}
 
 bool	open_outputfile(t_executor *current, t_lexer_list *lexer)
 {
@@ -30,6 +38,7 @@ bool	open_outputfile(t_executor *current, t_lexer_list *lexer)
 
 	if (new_fd == -1)
 	{
+		cleanup_redirections(current);
 		perror(lexer->str);
 		return (false);
 	}
@@ -79,6 +88,7 @@ int process_in_heredoc(t_executor *cur, t_lexer_list *lex, t_shell *sh)
         new_fd = open(lex->next->str, O_RDONLY);
         if (new_fd == -1)
         {
+			cleanup_redirections(cur);
             perror("minishell");
             return (FAILED);
         }
