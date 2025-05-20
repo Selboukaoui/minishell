@@ -325,5 +325,6 @@ bool			check_tty(void);
 int				skip_quates(char **input);
 int				check_fornorm(char **input);
 int				count_herdoc(int action);
+void			cleanup_redirections(t_executor *cur);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 11:14:49 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/19 09:58:06 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/20 19:36:49 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,34 @@ static	int	ft_isspace(int c)
 		|| c == '\v' || c == '\f' || c == '\r');
 }
 
+static	int	skip_empty_token(const char *cmdline, int *idx)
+{
+	int	i;
+
+	i = *idx;
+	if (ft_isspace((unsigned char)cmdline[i]))
+	{
+		(*idx)++;
+		return (1);
+	}
+	if (cmdline[i] == '"' && cmdline[i + 1] == '"')
+	{
+		*idx += 2;
+		return (1);
+	}
+	if (cmdline[i] == '\'' && cmdline[i + 1] == '\'')
+	{
+		*idx += 2;
+		return (1);
+	}
+	if (cmdline[i] == '.' && cmdline[i + 1] == '.')
+	{
+		*idx += 2;
+		return (1);
+	}
+	return (0);
+}
+
 int	is_cmdline_empty(const char *cmdline)
 {
 	int	i;
@@ -48,26 +76,8 @@ int	is_cmdline_empty(const char *cmdline)
 	i = 0;
 	while (cmdline[i])
 	{
-		if (ft_isspace((unsigned char)cmdline[i]))
-		{
-			i++;
+		if (skip_empty_token(cmdline, &i))
 			continue ;
-		}
-		if (cmdline[i] == '"' && cmdline[i + 1] == '"' )
-		{
-			i += 2;
-			continue ;
-		}
-		if (cmdline[i] == '\'' && cmdline[i + 1] == '\'')
-		{
-			i += 2;
-			continue ;
-		}
-		if (cmdline[i] == '.' && cmdline[i + 1] == '.' )
-		{
-			i += 2;
-			continue ;
-		}
 		return (0);
 	}
 	return (1);

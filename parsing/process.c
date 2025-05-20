@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:58:23 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/20 18:03:01 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/20 20:12:06 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ bool	open_outputfile(t_executor *current, t_lexer_list *lexer)
 	if (new_fd == -1)
 	{
 		perror(lexer->str);
+		cleanup_redirections(current);
 		return (false);
 	}
 	if (current->fd_out != STDOUT_FILENO)
@@ -46,42 +47,45 @@ int	process_out_append(t_executor *current, t_lexer_list *lexer)
 	return (OK);
 }
 
+static	int	open_input_fd(t_lexer_list *lex, t_shell *sh)
+{
+	int	new_fd;
+
+	if (lex->type == HEREDOC)
+	{
+		new_fd = create_heredoc(lex->next->str, sh);
+		return (new_fd);
+	}
+	return (open(lex->next->str, O_RDONLY));
+}
+
 int	process_in_heredoc(t_executor *cur, t_lexer_list *lex, t_shell *sh)
 {
-	int new_fd;
+	int	new_fd;
 
 	if (!lex->next || !lex->next->str)
 	{
 		ft_putstr_fd("minishell: ambiguous redirect\n", STDERR_FILENO);
-		exit_status(1, 1);
+		return (exit_status(1, 1), OK);
+	}
+	new_fd = open_input_fd(lex, sh);
+	if (lex->type == HEREDOC && (new_fd == -1 || new_fd == -2))
+	{
+		if (new_fd > 0)
+			close(new_fd);
+		if (cur->fd_in != STDIN_FILENO)
+			close(cur->fd_in);
+		exit_status(1, 130);
 		return (OK);
 	}
-	if (lex->type == HEREDOC)
+	if (lex->type != HEREDOC && new_fd == -1)
 	{
-		new_fd = create_heredoc(lex->next->str, sh);
-		if (new_fd == -1 || new_fd == -2)
-		{
-			if (new_fd > 0)
-				close(new_fd);
-			if (cur->fd_in != STDIN_FILENO)
-				close(cur->fd_in);
-			exit_status(1, 130);
-			return (OK);
-		}
-	}
-	else
-	{
-		new_fd = open(lex->next->str, O_RDONLY);
-		if (new_fd == -1)
-		{
-			perror(lex->next->str);
-			return (OK);
-		}
+		(perror(lex->next->str), cleanup_redirections(cur));
+		return (OK);
 	}
 	if (cur->fd_in != STDIN_FILENO)
 		close(cur->fd_in);
-	cur->fd_in = new_fd;
-	return (OK);
+	return ((cur->fd_in = new_fd), OK);
 }
 
 int	process_command(t_executor *current, t_lexer_list *lexer)

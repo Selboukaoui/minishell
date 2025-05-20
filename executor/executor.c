@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:42:43 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/20 17:59:55 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/20 20:00:21 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static	void	handle_builtin_or_return(t_shell *shell, t_executor *cur)
 	{
 		if (cur)
 		{
-			if (cur->fd_in  != STDIN_FILENO)
+			if (cur->fd_in != STDIN_FILENO)
 				close(cur->fd_in);
 			if (cur->fd_out != STDOUT_FILENO)
 				close(cur->fd_out);
@@ -41,20 +41,14 @@ static	void	handle_fork_execution(t_shell *shell)
 	pid = fork();
 	if (pid == -1)
 	{
-		if (shell->executor->fd_in != STDIN_FILENO)
-			close(shell->executor->fd_in);
-		if (shell->executor->fd_out != STDOUT_FILENO)
-			close(shell->executor->fd_out);
+		cleanup_redirections(shell->executor);
 		(perror("minishell"), exit_status(EXIT_SET, 1));
 		return ;
 	}
 	if (pid == 0)
 		(signal_setup(3), handle_single_child(shell));
 	waitpid(pid, &status, 0);
-	if (shell->executor->fd_in != STDIN_FILENO)
-		close(shell->executor->fd_in);
-	if (shell->executor->fd_out != STDOUT_FILENO)
-		close(shell->executor->fd_out);
+	cleanup_redirections(shell->executor);
 	if (WIFEXITED(status))
 		exit_status(EXIT_SET, WEXITSTATUS(status));
 	else if (WIFSIGNALED(status))
@@ -77,7 +71,7 @@ static	void	handle_single(t_shell *shell)
 	{
 		if (cur)
 		{
-			if (cur->fd_in  != STDIN_FILENO)
+			if (cur->fd_in != STDIN_FILENO)
 				close(cur->fd_in);
 			if (cur->fd_out != STDOUT_FILENO)
 				close(cur->fd_out);
