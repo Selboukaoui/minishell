@@ -6,7 +6,7 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 12:56:06 by selbouka          #+#    #+#             */
-/*   Updated: 2025/05/20 15:18:36 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:30:10 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_cat(char *str)
     int     len;
     int     i;
 
-	printf ("%s\n", str);
+	// printf ("%s\n", str);
     i = 0;
     len = ft_strlen (str) - 1;
     while (str[len] && str[len] != '/')

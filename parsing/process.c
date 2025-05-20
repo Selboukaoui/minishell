@@ -6,7 +6,7 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:58:23 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/20 15:25:45 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/20 17:19:32 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	process_command(t_executor *current, t_lexer_list *lexer)
 		size++;
 		tmp = tmp->next;
 	}
-	current->execs = (char **)ft_calloc(size + 1, sizeof(char *));
+	current->execs = (char **)ft_malloc((size + 2) * sizeof(char *), 1);//  3lach drt 2 wkhdmat ?
 	if (!current->execs)
 		return (FAILED);
 	while (i < size)
@@ -116,6 +116,7 @@ int	process_command(t_executor *current, t_lexer_list *lexer)
 		lexer = lexer->next;
 		i++;
 	}
+	current->execs[i] = NULL;
 	return (OK);
 }
 // bool	open_outputfile(t_executor *current, t_lexer_list *lexer)

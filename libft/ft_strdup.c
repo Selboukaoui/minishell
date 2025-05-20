@@ -6,7 +6,7 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 20:44:41 by selbouka          #+#    #+#             */
-/*   Updated: 2025/05/06 13:43:56 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/20 17:07:26 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 char	*ft_strdup(const char *src)
 {
 	char	*p;
+	int		len;
 	int		i;
 
-	i = ft_strlen(src);
-	p = ft_malloc(i + 1, 1);
-	i = 0;
+	len = ft_strlen(src);
+	p = ft_malloc(len + 1, 1);
 	if (p == NULL)
 		return (NULL);
+	i = 0;
 	while (src[i])
 	{
 		p[i] = src[i];
