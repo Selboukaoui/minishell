@@ -6,7 +6,7 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:55:21 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/21 13:02:35 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/21 13:19:50 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ static int	process_lexeme_segment(t_executor *current,
 		{
 			if (handle_cmd_node(current, lexer) == FAILED)
 				return (exit_status(1, 1), FAILED);
-
 		}
 		else
 			*lexer = (*lexer)->next;

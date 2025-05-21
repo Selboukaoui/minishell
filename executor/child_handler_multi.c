@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   child_handler_multi.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:38:38 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/21 12:53:17 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/21 13:20:26 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	execute_other(t_executor *current, t_info *info)
 		(ft_malloc(0, 0), exit(126));
 	execve(path, current->execs, env_array);
 	if (errno == ENOENT || errno == ENOEXEC)
-        handle_no_file_error();
+		handle_no_file_error();
 	try_exec_with_fallback(path, current->execs, env_array, info->shell);
 	if (errno == EACCES)
 		err(3);
