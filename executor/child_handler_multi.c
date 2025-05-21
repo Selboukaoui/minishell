@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:38:38 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/21 16:30:43 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/21 17:07:33 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ static	void	execute_builtin_child(t_info *info, t_executor *cur)
 	else if (ft_strcmp(args[0], "unset") == 0)
 		exit_code = unset(info->shell, args);
 	else if (ft_strcmp(args[0], "env") == 0)
-		exit_code = env(info->shell);
+		exit_code = env(info->shell, args);
 	else if (ft_strcmp(args[0], "exit") == 0)
 		exit_code = exit_builtin(info->shell, args, 1);
 	ft_malloc(0, 0);

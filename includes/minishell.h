@@ -178,7 +178,7 @@ int				pwd(t_environ_list *env);
 int				cd(t_shell *shell, char **arg);
 void			*ft_malloc(size_t size, int mode);
 int				exit_builtin(t_shell *shell, char **args, int in_pipe);
-int				env(t_shell *shell);
+int				env(t_shell *shell, char **args);
 int				export(t_shell *shell, char **args);
 int				exit_status(int action, int value);
 t_environ_node	*ft_getenv(t_environ_list *env, char *key);
