@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:58:23 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/20 22:22:27 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/21 12:55:19 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	process_in_heredoc(t_executor *cur, t_lexer_list *lex, t_shell *sh)
 		if (cur->fd_in != STDIN_FILENO)
 			close(cur->fd_in);
 		exit_status(1, 130);
-		return (OK);
+		return (FAILED);
 	}
 	if (lex->type != HEREDOC && new_fd == -1)
 	{

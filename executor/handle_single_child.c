@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 12:13:22 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/20 21:39:07 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/21 12:50:57 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static	void	exec_command_and_cleanup(char *path,
 	if (!env_array)
 		(ft_malloc(0, 0), exit(126));
 	execve(path, args, env_array);
-	if (errno == ENOENT)
+	if (errno == ENOENT || errno == ENOEXEC)
 		handle_no_file_error();
 	if (stat(path, &st) == 0 && S_ISDIR(st.st_mode))
 	{
