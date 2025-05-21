@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 12:27:05 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/12 22:27:04 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/21 15:40:01 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	check_syntax(char *input)
 		exit_status(EXIT_SET, 2);
 		return (0);
 	}
-	if (!check_pipe(input))
+	if (check_pipe(input) == 0)
 	{
 		ft_putstr_fd("minishell:  syntax error near unexpected token `|'\n", 2);
 		exit_status(EXIT_SET, 2);

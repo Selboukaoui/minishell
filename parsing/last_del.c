@@ -6,7 +6,7 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:14:41 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/21 14:44:47 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:51:13 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,17 @@ int	skip_quates(char **input)
 		{
 			quote = **input;
 			(*input)++;
-			if (**input == quote)
-				return (1);
-			while (**input && **input != quote)
+			while (**input)
 			{
+				if (**input == quote)
+				{
+					(*input)++;
+					return (1);
+				}
 				if (**input == '\0')
 					return (0);
-				if (**input == quote)
-					return (1);
 				(*input)++;
 			}
-			if (**input == '\0')
-				return (0);
 		}
 		(*input)++;
 	}

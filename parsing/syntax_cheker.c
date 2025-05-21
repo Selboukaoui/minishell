@@ -6,7 +6,7 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:49:40 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/21 15:23:30 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:44:59 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,22 +128,26 @@ int	check_pipe(char *input)
 	while (*input)
 	{
 		skip_quates(&input);
+			// input++;
+		// printf ("---%s---\n", input);
 		if (!(*input))
-			return (0);
-		if (*input == '|')
+			return (-1);
+		if (*input && *input == '|')
 		{
-			while ((*input == '|' || *input == ' ' || *input == '\t') && *input)
+			while (*input && (*input == '|' || *input == ' ' || *input == '\t'))
 			{
+				if (*input== '\0')
+					return (0);
 				if (*input == '|')
 					j++;
-				if (*input++ == '\0')
-					return (0);
+				input++;
 			}
 			if (j > 1 || ft_special(*input, 123))
 				return (0);
 			1 && (j = 0, --input);
 		}
-		input++;
+		else if (*input)
+			input++;
 	}
 	return (1);
 }
