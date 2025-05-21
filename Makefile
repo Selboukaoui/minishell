@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
 NAME = minishell
 LIBFT = libft/libft.a
 
@@ -31,7 +31,7 @@ all: $(LIBFT) $(NAME)
 	@echo ""
 
 $(NAME): $(OBJS) $(LIBFT)
-	@$(CC) $(OBJS) $(LIBFT) -lreadline -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -lreadline -o $(NAME)
 
 %.o: %.c includes/minishell.h  libft/libft.h
 	@$(CC) $(CFLAGS) -c $< -o $@

@@ -6,7 +6,7 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:49:40 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/15 18:03:50 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:23:30 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ int	check_redirect_out(char *input, int j)
 	while (*input)
 	{
 		skip_quates(&input);
+			// continue ;
+		if (!(*input))
+			return (1);
 		if (*input == '>')
 		{
 			j = 0;
@@ -87,7 +90,10 @@ int	check_redirect_in(char *input, int j)
 {
 	while (*input)
 	{
-		skip_quates(&input);
+		skip_quates(&input) ;
+			// continue;
+		if (!(*input))
+			return (1);
 		if (*input == '<')
 		{
 			j = 0;
@@ -121,8 +127,9 @@ int	check_pipe(char *input)
 		return (0);
 	while (*input)
 	{
-		if (skip_quates(&input))
-			input++;
+		skip_quates(&input);
+		if (!(*input))
+			return (0);
 		if (*input == '|')
 		{
 			while ((*input == '|' || *input == ' ' || *input == '\t') && *input)
