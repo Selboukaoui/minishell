@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   last_del.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:14:41 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/21 17:13:01 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/21 17:23:59 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,30 +21,23 @@ int	check_fornorm(char **input)
 	return (1);
 }
 
-#include <stdio.h>
-
-int skip_quates(char **input)
+int	skip_quates(char **input)
 {
-    char quote;
+	char	quote;
 
-    if (**input == '\0' || (**input != '\'' && **input != '"'))
-        return 0;
-
-    quote = **input;
-    (*input)++;
-
-
-    while (**input && **input != quote) {
-        (*input)++;
-    }
-    if (**input == quote) {
-        (*input)++;
-        return 1;
-    }
-
-    return 0;
+	if (**input == '\0' || (**input != '\'' && **input != '"'))
+		return (0);
+	quote = **input;
+	(*input)++;
+	while (**input && **input != quote)
+		(*input)++;
+	if (**input == quote)
+	{
+		(*input)++;
+		return (1);
+	}
+	return (0);
 }
-
 
 static	int	ft_isspace(int c)
 {

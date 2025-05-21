@@ -6,11 +6,22 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 12:27:05 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/21 16:14:06 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/21 17:19:36 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+int	skip(char	**input, int j)
+{
+	if (j > 2)
+		return (write(2, "minishell: syntax error !!\n", 28), 0);
+	while (**input && (**input == ' ' || **input == '\t'))
+		(*input)++;
+	if (ft_special(**input, 69))
+		return (write(2, "minishell: syntax error !!\n", 28), 0);
+	return (1);
+}
 
 t_lexer_list	*lexer(t_shell *shell)
 {

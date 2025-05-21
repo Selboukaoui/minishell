@@ -6,7 +6,7 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:49:40 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/21 16:16:10 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/21 17:21:37 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	check_redirect_out(char *input, int j)
 	while (*input)
 	{
 		skip_quates(&input);
-			// continue ;
 		if (!(*input))
 			return (1);
 		if (*input == '>')
@@ -72,13 +71,8 @@ int	check_redirect_out(char *input, int j)
 unexpected token `newline'\n", 57), 0);
 				j++;
 			}
-			if (j > 2)
-				return (write(1, "syntax error near unexpected token `>'\n", \
-				40), 0);
-			while ((*input == ' ' || *input == '\t') && *input)
-				input++;
-			if (ft_special(*input, 69))
-				return (write(2, "minishell: syntax error !!\n", 28), 0);
+			if (skip(&input, j) == 0)
+				return (0);
 			--input;
 		}
 		input++;
@@ -105,12 +99,8 @@ int	check_redirect_in(char *input, int j)
 			}
 			while (*input && (*input == ' ' || *input == '\t'))
 				input++;
-			if (j > 2)
-				return (write(2, "minishell: syntax error !!\n", 28), 0);
-			while (*input && (*input == ' ' || *input == '\t'))
-				input++;
-			if (ft_special(*input, 69))
-				return (write(2, "minishell: syntax error !!\n", 28), 0);
+			if (skip(&input, j) == 0)
+				return (0);
 			--input;
 		}
 		input++;
@@ -118,35 +108,31 @@ int	check_redirect_in(char *input, int j)
 	return (1);
 }
 
-
-
-int check_pipe(char *input)
+int	check_pipe(char *input)
 {
-    int j;
+	int	j;
 
-    if (!check_fornorm(&input))
-        return 0;
-    while (*input)
-    {
-        if (skip_quates(&input))
-            continue;
-        if (*input == '|')
-        {
-            j = 0;                  
-            while (*input == '|' || *input == ' '
-                   || *input == '\t')
-            {
-                if (*input == '|')
-                    j++;
-                input++;
-            }
-            if (j > 1 || ft_special(*input, 123))
-                return 0;
-        }
-        else
-            input++;
-    }
-    return 1;
+	if (!check_fornorm(&input))
+		return (0);
+	while (*input)
+	{
+		if (skip_quates(&input))
+			continue ;
+		if (*input == '|')
+		{
+			j = 0;
+			while (*input == '|' || *input == ' ' \
+				|| *input == '\t')
+			{
+				if (*input == '|')
+					j++;
+				input++;
+			}
+			if (j > 1 || ft_special(*input, 123))
+				return (0);
+		}
+		else
+			input++;
+	}
+	return (1);
 }
-
-

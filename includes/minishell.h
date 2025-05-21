@@ -137,7 +137,8 @@ typedef struct s_replinfo
 	size_t	o;
 }	t_replinfo;
 
-int				ft_chdir(char *arg);
+int				ft_special(char x, int her);
+int				skip(char	**input, int j);
 void			ft_cat(char *str);
 char			*get_next_token(const char *s, int *index);
 char			*parse_token(const char *s, int *i);
@@ -285,13 +286,9 @@ int				find_token_pos(const char *rl, const char *s, int last_pos);
 t_lexer_list	*create_lexer_list(char **input_array);
 t_lexer_list	*allocate_lexer_nodes(int size);
 int				count_input_array(char **input_array);
-int				handle_expand_home(const char *in, \
-char **res, int *i, t_shell *shell);
 void			process_variable(const char *segment, \
 char **res, int *i, t_shell *shell);
 int				handle_expand_variable(const char *in, \
-char **res, int *i, t_shell *shell);
-void			process_home(const char *segment, \
 char **res, int *i, t_shell *shell);
 char			*segment_expand(const char *segment, t_shell *shell);
 char			*process_export_segment(const char *seg, t_shell *shell);
