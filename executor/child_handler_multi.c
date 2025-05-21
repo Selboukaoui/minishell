@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   child_handler_multi.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:38:38 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/21 13:20:26 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:30:43 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,11 @@ static	void	execute_builtin_child(t_info *info, t_executor *cur)
 
 int	child_handler_multi(int *fildes, t_executor *current, t_info *info)
 {
+	if (!current || !current->execs || !current->execs[0])
+	{
+		ft_malloc(0, 0);
+		return (FAIL_SYSCALL_CHILD);
+	}
 	if (handle_redirections_pipeline(fildes, current) == FAIL_SYSCALL)
 		(ft_malloc(0, 0), exit(FAIL_SYSCALL_CHILD));
 	if (is_cmdline_empty(current->execs[0]))
