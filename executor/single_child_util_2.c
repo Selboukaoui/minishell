@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 10:36:12 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/08 17:22:48 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/21 22:08:35 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static	void	transform_helper(t_environ_node *current, char **environ_array)
 	char	*temp;
 
 	i = 0;
+
 	while (current != NULL)
 	{
 		if (current->value == NULL)
@@ -84,6 +85,8 @@ char	**transform_environ_array(t_shell *shell)
 
 	if (!shell || !shell->env)
 		return (NULL);
+	if (!shell->env->head)
+		handle_no_file_error();
 	current = shell->env->head;
 	environ_array = create_environ_array(shell->env);
 	transform_helper(current, environ_array);

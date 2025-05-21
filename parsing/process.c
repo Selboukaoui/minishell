@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:58:23 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/21 12:55:19 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/21 22:24:05 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool	open_outputfile(t_executor *current, t_lexer_list *lexer)
 		exit_status(1, 1);
 		if (current->size == 1)
 			return (false);
-		return (true);
+		return (current->flag = false, true);
 	}
 	if (current->append)
 		new_fd = open(lexer->str, O_WRONLY | O_CREAT | O_APPEND, 0644);
@@ -33,7 +33,7 @@ bool	open_outputfile(t_executor *current, t_lexer_list *lexer)
 		(perror(lexer->str), cleanup_redirections(current));
 		if (current->size == 1)
 			return (false);
-		return (true);
+		return (current->flag = false, true);
 	}
 	if (current->fd_out != STDOUT_FILENO)
 		close(current->fd_out);
@@ -83,7 +83,7 @@ int	process_in_heredoc(t_executor *cur, t_lexer_list *lex, t_shell *sh)
 		(perror(lex->next->str), cleanup_redirections(cur));
 		if (cur->size == 1)
 			return (FAILED);
-		return (OK);
+		return (cur->flag = false , OK);
 	}
 	if (cur->fd_in != STDIN_FILENO)
 		close(cur->fd_in);

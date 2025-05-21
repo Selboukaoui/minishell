@@ -95,6 +95,7 @@ typedef struct s_executor
 	bool				heredoc;
 	char				**path;
 	char				**execs;
+	bool				flag;
 	struct s_executor	*prev;
 	struct s_executor	*next;
 }	t_executor;

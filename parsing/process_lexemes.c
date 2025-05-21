@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_lexemes.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:55:21 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/21 13:19:50 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/21 22:29:01 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,15 @@ static int	process_lexeme_segment(t_executor *current,
 		{
 			if (handle_out_append_node(current, lexer) == FAILED)
 				return (exit_status(1, 1), FAILED);
+			if (current->flag == false)
+				exit_status(1, 1);
 		}
 		else if ((*lexer)->type == REDERECT_IN || (*lexer)->type == HEREDOC)
 		{
 			if (handle_in_heredoc_node(current, lexer, shell) == FAILED)
 				return (exit_status(1, 1), FAILED);
+			if (current->flag == false)
+				exit_status(1, 1);
 		}
 		else if ((*lexer)->type == CMD)
 		{

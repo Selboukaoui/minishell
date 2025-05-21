@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prep_executor.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 16:08:09 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/09 19:33:22 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/21 21:16:48 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ static	t_executor	*init_executor_list(int size)
 	{
 		current->id = i++;
 		current->size = size;
+		current->flag = true;
 		set_executor_defaults(current);
 		current = current->next;
 	}

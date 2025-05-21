@@ -6,7 +6,7 @@
 /*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:38:38 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/21 17:07:33 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/21 21:21:38 by asebban          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ static	void	execute_builtin_child(t_info *info, t_executor *cur)
 
 int	child_handler_multi(int *fildes, t_executor *current, t_info *info)
 {
-	if (!current || !current->execs || !current->execs[0])
+	if (!current || !current->execs || !current->execs[0] || !current->flag)
 	{
 		ft_malloc(0, 0);
 		return (FAIL_SYSCALL_CHILD);
