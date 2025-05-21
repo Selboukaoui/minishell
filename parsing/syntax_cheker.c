@@ -6,7 +6,7 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:49:40 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/21 15:44:59 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:53:32 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,8 @@ int	check_redirect_in(char *input, int j)
 {
 	while (*input)
 	{
-		skip_quates(&input) ;
-			// continue;
+		if (skip_quates(&input))
+			continue ;
 		if (!(*input))
 			return (1);
 		if (*input == '<')
