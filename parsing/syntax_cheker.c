@@ -6,7 +6,7 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:49:40 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/21 15:53:32 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:16:10 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,36 +118,35 @@ int	check_redirect_in(char *input, int j)
 	return (1);
 }
 
-int	check_pipe(char *input)
-{
-	int	j;
 
-	j = 0;
-	if (check_fornorm(&input) == 0)
-		return (0);
-	while (*input)
-	{
-		skip_quates(&input);
-			// input++;
-		// printf ("---%s---\n", input);
-		if (!(*input))
-			return (-1);
-		if (*input && *input == '|')
-		{
-			while (*input && (*input == '|' || *input == ' ' || *input == '\t'))
-			{
-				if (*input== '\0')
-					return (0);
-				if (*input == '|')
-					j++;
-				input++;
-			}
-			if (j > 1 || ft_special(*input, 123))
-				return (0);
-			1 && (j = 0, --input);
-		}
-		else if (*input)
-			input++;
-	}
-	return (1);
+
+int check_pipe(char *input)
+{
+    int j;
+
+    if (!check_fornorm(&input))
+        return 0;
+    while (*input)
+    {
+        if (skip_quates(&input))
+            continue;
+        if (*input == '|')
+        {
+            j = 0;                  
+            while (*input == '|' || *input == ' '
+                   || *input == '\t')
+            {
+                if (*input == '|')
+                    j++;
+                input++;
+            }
+            if (j > 1 || ft_special(*input, 123))
+                return 0;
+        }
+        else
+            input++;
+    }
+    return 1;
 }
+
+
