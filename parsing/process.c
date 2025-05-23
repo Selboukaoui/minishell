@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:58:23 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/21 22:24:05 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/23 16:47:07 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	process_in_heredoc(t_executor *cur, t_lexer_list *lex, t_shell *sh)
 		(perror(lex->next->str), cleanup_redirections(cur));
 		if (cur->size == 1)
 			return (FAILED);
-		return (cur->flag = false , OK);
+		return (cur->flag = false, OK);
 	}
 	if (cur->fd_in != STDIN_FILENO)
 		close(cur->fd_in);

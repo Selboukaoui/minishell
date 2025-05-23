@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   single_child_util_2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 10:36:12 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/21 22:08:35 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/23 16:46:47 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ static	void	transform_helper(t_environ_node *current, char **environ_array)
 	char	*temp;
 
 	i = 0;
-
 	while (current != NULL)
 	{
 		if (current->value == NULL)
