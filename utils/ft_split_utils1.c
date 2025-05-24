@@ -6,7 +6,7 @@
 /*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 21:14:37 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/16 12:11:21 by selbouka         ###   ########.fr       */
+/*   Updated: 2025/05/24 20:38:42 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,26 +86,30 @@ char	*parse_token(const char *s, int *i)
 	return (res);
 }
 
-char	*get_next_token(const char *s, int *index)
+char	*get_next_token(const char *s, int *index, int *is_op)
 {
 	int		i;
 	int		op_len;
-	char	*token;
+	char	*tok;
 
-	i = *index;
-	i = skip_spaces(s, i);
+	*is_op = 0;
+	i = skip_spaces(s, *index);
 	if (!s[i])
 		return (NULL);
-	op_len = ft_operator_len(&s[i]);
-	if (op_len > 0)
-	{
-		token = ft_dup_token(&s[i], op_len);
-		*index = i + op_len;
-	}
+	if (s[i] == '\'' || s[i] == '"')
+		tok = parse_token(s, &i);
 	else
 	{
-		token = parse_token(s, &i);
-		*index = i;
+		op_len = ft_operator_len(&s[i]);
+		if (op_len > 0)
+		{
+			tok = ft_dup_token(&s[i], op_len);
+			*is_op = 1;
+			i += op_len;
+		}
+		else
+			tok = parse_token(s, &i);
 	}
-	return (token);
+	*index = i;
+	return (tok);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_lexemes.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asebban <asebban@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selbouka <selbouka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:55:21 by asebban           #+#    #+#             */
-/*   Updated: 2025/05/21 22:29:01 by asebban          ###   ########.fr       */
+/*   Updated: 2025/05/24 20:39:40 by selbouka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ static	int	handle_out_append_node(t_executor *current, t_lexer_list **lexer)
 {
 	int	ret;
 
+	if (!*lexer || !(*lexer)->next)
+	{
+		ft_putendl_fd("minishell: ambiguous redirect", STDERR_FILENO);
+		return (FAILED);
+	}
 	ret = process_out_append(current, *lexer);
 	if (ret == FAILED)
 		return (FAILED);
@@ -28,6 +33,11 @@ static	int	handle_in_heredoc_node(t_executor *current,
 {
 	int	ret;
 
+	if (!*lexer || !(*lexer)->next)
+	{
+		ft_putendl_fd("minishell: ambiguous redirect", STDERR_FILENO);
+		return (FAILED);
+	}
 	ret = process_in_heredoc(current, *lexer, shell);
 	if (ret == FAILED)
 		return (FAILED);

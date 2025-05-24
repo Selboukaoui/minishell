@@ -34,7 +34,7 @@
 # define FAIL_SYSCALL       -1
 # define OKAY               0
 # define FAIL_SYSCALL_PARENT    1
-# define FAIL_SYSCALL_CHILD  2
+# define FAIL_SYSCALL_CHILD  1
 
 # define FAIL -1
 # define PARENT 1
@@ -74,6 +74,13 @@ typedef enum s_token
 	HEREDOC = 5,
 	PIPE	= 6,
 }	t_token;
+
+typedef struct s_split
+{
+	char			*str;
+	int				is_operator;
+	struct s_split	*next;
+}	t_split;
 
 typedef struct s_lexer_list
 {
@@ -141,7 +148,7 @@ typedef struct s_replinfo
 int				ft_special(char x, int her);
 int				skip(char	**input, int j);
 void			ft_cat(char *str);
-char			*get_next_token(const char *s, int *index);
+char			*get_next_token(const char *s, int *index, int *is_op);
 char			*parse_token(const char *s, int *i);
 int				parse_literal(const char *s, int *i, char **res);
 int				parse_quoted(const char *s, int *i, char **res);
@@ -238,7 +245,7 @@ t_lexer_list	*lexer(t_shell *shell);
 char			*clean_rl_copy(char *rl_copy);
 int				check_quote_syntax(const char *input);
 bool			parser(t_shell *shell);
-char			**ft_newsplit(const char *s);
+t_split			*ft_newsplit(const char *s);
 int				ft_strcmp(const char *s1, const char *s2);
 void			signal_setup(int mode);
 int				check_redirect_out(char *input, int j);
